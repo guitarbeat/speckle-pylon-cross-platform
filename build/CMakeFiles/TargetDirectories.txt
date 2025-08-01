@@ -1,0 +1,4 @@
+/home/ubuntu/specklepylon_analysis/speckle-software-master/build/CMakeFiles/speckle.dir
+/home/ubuntu/specklepylon_analysis/speckle-software-master/build/CMakeFiles/edit_cache.dir
+/home/ubuntu/specklepylon_analysis/speckle-software-master/build/CMakeFiles/rebuild_cache.dir
+/home/ubuntu/specklepylon_analysis/speckle-software-master/build/CMakeFiles/speckle_autogen.dir
