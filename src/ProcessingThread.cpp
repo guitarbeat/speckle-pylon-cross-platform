@@ -114,7 +114,7 @@ int ProcessingThread::InitializeProcessing(void)
 #ifdef _MSC_VER
 		speckle->sc_images[i]= (float *)_aligned_malloc(speckle->sc_w*speckle->sc_h*sizeof(float), 32);
 #else
-		speckle->sc_images[i] = (float *)memalign(32, speckle->sc_w*speckle->sc_h*sizeof(float));
+		speckle->sc_images[i] = static_cast<float*>(aligned_alloc(32, speckle->sc_w*speckle->sc_h*sizeof(float)));
 #endif
 
     //qDebug() << "allocated " << num_to_allocate << " sc buffers";
@@ -123,7 +123,7 @@ int ProcessingThread::InitializeProcessing(void)
 #ifdef _MSC_VER
         speckle->sc_moving= (float *)_aligned_malloc(speckle->sc_w*speckle->sc_h*sizeof(float), 32);
 #else
-        speckle->sc_moving = (float *)memalign(32, speckle->sc_w*speckle->sc_h*sizeof(float));
+        		speckle->sc_moving = static_cast<float*>(aligned_alloc(32, speckle->sc_w*speckle->sc_h*sizeof(float)));
 #endif
 
     processing_timer.start();

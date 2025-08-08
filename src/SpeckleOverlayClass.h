@@ -50,7 +50,7 @@ public:
     bool useAlpha(void) {return use_alpha;}
 
     void ComputeTransform(CImgList<float> pts1, CImgList<float> pts2, CImg<float> *tform);
-    void GeneratePixelMapping(CImg<unsigned char> img1, CImg<unsigned char> img2,
+    void GeneratePixelMapping(CImg<unsigned char> img1, CImg<float> img2,
                                                    CImg<float> tform,  CImg<int> *pixel_mapping);
     void RegisterImages(CImg<float> old_img, CImg<float> *new_img,
                                                    CImg<int> pixel_mapping);

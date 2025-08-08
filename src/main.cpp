@@ -13,9 +13,9 @@ int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
 
     qDebug().noquote() << QString("Speckle Software v%1.%2.%3 (%4)")
-                          .arg(VERSION_MAJOR)
-                          .arg(VERSION_MINOR)
-                          .arg(VERSION_BUILD)
+                          .arg(3)
+                          .arg(1)
+                          .arg(1)
                           .arg(QDate::currentDate().toString(Qt::ISODate));
 
     QPixmap pixmap("://icons/splash.png");

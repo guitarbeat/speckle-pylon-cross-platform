@@ -157,12 +157,10 @@ int read_raw_image_file_header(QString fname, unsigned short *width, unsigned sh
 	return(1);
 }
 /*************************************************************************************/
-double SystemTime_to_Seconds(SYSTEMTIME st)
+double SystemTime_to_Seconds(QTime qt)
 {
-	double t;
-	// returns the time in seconds (plus ms) as a double
-	t=st.wHour*60.0*60.0 + st.wMinute*60.0 + st.wSecond + st.wMilliseconds/1000.0;
-	return(t);
+    // returns the time in seconds (plus ms) as a double
+    return qt.hour()*3600.0 + qt.minute()*60.0 + qt.second() + qt.msec()/1000.0;
 }
 /*************************************************************************************/
 void rescale_roi(CImg<int> roi, double zoom)
@@ -170,11 +168,10 @@ void rescale_roi(CImg<int> roi, double zoom)
 	// rescale an roi back to its full size
 	// assumes that zoom is a percentage
 
-	roi *= (float)(zoom)/100.0;
-	//roi[0] = (int)(roi[0]/(zoom/100.0));
-	//roi[1] = (int)(roi[1]/(zoom/100.0));
-	//roi[3] = (int)(roi[3]/(zoom/100.0));
-	//roi[4] = (int)(roi[4]/(zoom/100.0));
+	float scale = static_cast<float>(zoom)/100.0f;
+	for (int y = 0; y < roi.height(); ++y)
+		for (int x = 0; x < roi.width(); ++x)
+			roi(x,y) = static_cast<int>(roi(x,y) * scale);
 }
 /*************************************************************************************/
 void compute_sc16(CImgList<unsigned short> input, int window, int Nframes, float *sc)
@@ -209,7 +206,9 @@ void compute_sc16(CImgList<unsigned short> input, int window, int Nframes, float
 			sc_out(x,y) += sqrt((N*I2(x,y)-I(x,y)*I(x,y))/(N*(N-1)))/(I(x,y)/N);
 		}
 	}
-	sc_out *= 1.0/((float)(Nframes));
+	// sc_out *= 1.0/((float)(Nframes));
+	float invN = 1.0f/static_cast<float>(Nframes);
+	cimg_forXY(sc_out, sx, sy) { sc_out(sx,sy) = sc_out(sx,sy) * invN; }
 
 	speckle->sc_w = width;
 	speckle->sc_h = height;
@@ -258,7 +257,9 @@ void compute_sc8(CImgList<unsigned char> input, int window, int Nframes, float *
             sc_out(x,y) += sqrt((N*I2(x,y)-I(x,y)*I(x,y))/(N*(N-1)))/(I(x,y)/N);
         }
     }
-    sc_out *= 1.0/((float)(Nframes));
+    // sc_out *= 1.0/((float)(Nframes));
+    float invN = 1.0f/static_cast<float>(Nframes);
+    cimg_forXY(sc_out, sx, sy) { sc_out(sx,sy) = sc_out(sx,sy) * invN; }
 
     speckle->sc_w = width;
     speckle->sc_h = height;
@@ -537,7 +538,7 @@ void AddColorbarToImage(CImg<unsigned char> *rgb_img, CImg<unsigned char> colorm
                                          float min, float max)
 {
     CImg<unsigned char> cbar(50,(int)(rgb_img->height()/2),1,3);
-    CImg<float> cbar_labels(3);
+    CImg<float> cbar_labels(3,1,1,1,0.0f);
     unsigned char black[]={0,0,0};
 
     cimg_forXY(cbar,x,y){

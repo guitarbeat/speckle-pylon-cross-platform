@@ -118,7 +118,12 @@ void Camera::acquireImages(int Nframes, unsigned char **image_buffers)
     CImg<unsigned char> tmp_img(im_w, im_h, 1, color_planes);
     for(int i=0;i<Nframes; i++)
     {
-        tmp_img.rand(0,255);
+        // Fill with random bytes for simulation
+        for (int y = 0; y < im_h; ++y) {
+            for (int x = 0; x < im_w; ++x) {
+                tmp_img(x, y) = static_cast<unsigned char>(std::rand() % 256);
+            }
+        }
         memcpy((void *)(image_buffers[i]), tmp_img.data(), im_w*im_h*color_planes);
         img_acquired++;
     }

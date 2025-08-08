@@ -96,7 +96,7 @@ void SpeckleWindow::init_speckle(void) {
                                   speckle->theCamera->color_planes);
     speckle->raw_images[0] = speckle->raw_list[0].data();
 
-    speckle->SC = (float *)_aligned_malloc(MAX_IMG_SIZE*MAX_IMG_SIZE*sizeof(float), 16); // force 16-byte aligned
+    speckle->SC = static_cast<float*>(aligned_alloc(16, MAX_IMG_SIZE*MAX_IMG_SIZE*sizeof(float))); // 16-byte aligned
     speckle->rTC_base = (float *)calloc(MAX_IMG_SIZE*MAX_IMG_SIZE,sizeof(float));
     speckle->rTC = (float *)calloc(MAX_IMG_SIZE*MAX_IMG_SIZE,sizeof(float));
 
@@ -211,7 +211,7 @@ void SpeckleWindow::createActions(void)
     // Live View
     liveAction = new QAction(QIcon(":/Live"), "Live View", this);
     liveAction->setToolTip("Live View (Ctrl + L)");
-    liveAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_L));
+    liveAction->setShortcut(QKeySequence(Qt::CTRL | Qt::Key_L));
     liveAction->setIconVisibleInMenu(false);
     connect(liveAction, &QAction::triggered,
             this, &SpeckleWindow::on_actionLive);
@@ -219,7 +219,7 @@ void SpeckleWindow::createActions(void)
     // Record
     recordAction = new QAction(QIcon(":/Acquire"), "Record", this);
     recordAction->setToolTip("Record (Ctrl + R)");
-    recordAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_R));
+    recordAction->setShortcut(QKeySequence(Qt::CTRL | Qt::Key_R));
     recordAction->setIconVisibleInMenu(false);
     connect(recordAction, &QAction::triggered,
             this, &SpeckleWindow::on_actionRecord);
@@ -227,7 +227,7 @@ void SpeckleWindow::createActions(void)
     // Stop
     stopAction = new QAction(QIcon(":/Stop"), "Stop", this);
     stopAction->setToolTip("Stop (Ctrl + S)");
-    stopAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_S));
+    stopAction->setShortcut(QKeySequence(Qt::CTRL | Qt::Key_S));
     stopAction->setIconVisibleInMenu(false);
     connect(stopAction, &QAction::triggered,
             this, &SpeckleWindow::on_actionStop);
@@ -242,7 +242,7 @@ void SpeckleWindow::createActions(void)
     // Show Histogram
     histogramAction = new QAction(QIcon(":/Histogram"), "Histogram", this);
     histogramAction->setToolTip("Show Histogram (Ctrl + H)");
-    histogramAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_H));
+    histogramAction->setShortcut(QKeySequence(Qt::CTRL | Qt::Key_H));
     histogramAction->setIconVisibleInMenu(false);
     connect(histogramAction, &QAction::triggered,
             this, &SpeckleWindow::on_actionShowHistogram);
@@ -313,7 +313,7 @@ void SpeckleWindow::createActions(void)
     // Align with QR codes
     alignQRCodesAction = new QAction("Align with QR Codes", this);
     alignQRCodesAction->setToolTip("Align with QR codes (Alt + Q)");
-    alignQRCodesAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_Q));
+    alignQRCodesAction->setShortcut(QKeySequence(Qt::ALT | Qt::Key_Q));
     connect(alignQRCodesAction, &QAction::triggered,
             this, &SpeckleWindow::on_actionAlignQR);
 
@@ -386,7 +386,7 @@ void SpeckleWindow::createActions(void)
     // Align with QR codes
     refreshCamerasAction = new QAction("Refresh camera list", this);
     refreshCamerasAction->setToolTip("Refresh camera list (Alt + R)");
-    refreshCamerasAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_R));
+    refreshCamerasAction->setShortcut(QKeySequence(Qt::ALT | Qt::Key_R));
     connect(refreshCamerasAction, &QAction::triggered,
             this, &SpeckleWindow::on_refreshCamerasAction);
   //  qDebug() << "disabling camera list refresh for now...";
@@ -530,8 +530,10 @@ void SpeckleWindow::setupSignalsSlots(void)
                 display, &SpeckleDisplay::updateSC);
         connect(overlayCreator, &OverlayImageCreator::overlayImageReady,
                 display, &SpeckleDisplay::updateOverlay);
+#ifdef SPECKLE_USE_OPENCV
         connect(&video_in_thread, &VideoInThread::videoinImageReady,
                 display, &SpeckleDisplay::updateVideoIn);
+#endif
         connect(this, &SpeckleWindow::isLive,
                 display, &SpeckleDisplay::isLive);
         connect(display, &SpeckleDisplay::roiAdded,
@@ -755,18 +757,18 @@ void SpeckleWindow::on_actionRecord(void)
         bool filename_avail=false;
         while(!filename_avail)
         {
-            QFileInfo raw_file(speckle->filename + QString("%1").arg(ifile,3,10, QChar("0")) + ".00000");
-            QFileInfo sc_file(speckle->filename + QString("%1").arg(ifile,3,10, QChar("0")) + ".00000.sc");
-            QFileInfo in_mp4_file(speckle->filename + QString("%1").arg(ifile,3,10, QChar("0")) + "_input.mp4");
-            QFileInfo sc_mp4_file(speckle->filename + QString("%1").arg(ifile,3,10, QChar("0")) + "_sc.mp4");
-            QFileInfo ol_mp4_file(speckle->filename + QString("%1").arg(ifile,3,10, QChar("0")) + "_overlay.mp4");
+            QFileInfo raw_file(speckle->filename + QString("%1").arg(ifile,3,10, QLatin1Char('0')) + ".00000");
+            QFileInfo sc_file(speckle->filename + QString("%1").arg(ifile,3,10, QLatin1Char('0')) + ".00000.sc");
+            QFileInfo in_mp4_file(speckle->filename + QString("%1").arg(ifile,3,10, QLatin1Char('0')) + "_input.mp4");
+            QFileInfo sc_mp4_file(speckle->filename + QString("%1").arg(ifile,3,10, QLatin1Char('0')) + "_sc.mp4");
+            QFileInfo ol_mp4_file(speckle->filename + QString("%1").arg(ifile,3,10, QLatin1Char('0')) + "_overlay.mp4");
 
             if(raw_file.exists() || sc_file.exists() || in_mp4_file.exists() || sc_mp4_file.exists() || ol_mp4_file.exists())
                 ifile++;
             else
                 filename_avail=true;
         }
-        speckle->filename = speckle->filename + QString("%1").arg(ifile,3,10,QChar("0"));
+        speckle->filename = speckle->filename + QString("%1").arg(ifile,3,10,QLatin1Char('0'));
     }
 
     // Initialize the progressbar
@@ -783,8 +785,8 @@ void SpeckleWindow::on_actionRecord(void)
     {
         acquisition_progressBar->setMaximum(speckle->acquisition->max_acq_time);
         acquisition_progressBar->setFormat(QString("%p% (00:00/%1:%2)")
-                                            .arg(speckle->acquisition->max_acq_time / 60000 , 2, 10, QChar("0"))
-                                            .arg((speckle->acquisition->max_acq_time % 60000) / 1000, 2, 10, QChar("0")));
+                                            .arg(speckle->acquisition->max_acq_time / 60000 , 2, 10, QLatin1Char('0'))
+                                                                                          .arg((speckle->acquisition->max_acq_time % 60000) / 1000, 2, 10, QLatin1Char('0')));
         acquisition_progressBar->setVisible(true);
         continuous_acq_label->setVisible(false);
     }
@@ -940,18 +942,18 @@ void SpeckleWindow::updateProgressBar(void)
             acquisition_progressBar->setValue(speckle->acquisition->max_acq_time); // Can\'t set value outside current range
 
         QString format = QString("%p% (%1:%2/%3:%4)")
-                            .arg(t_elapsed / 60000 , 2, 10, QChar("0"))
-                            .arg((t_elapsed % 60000) / 1000, 2, 10, QChar("0"))
-                            .arg(speckle->acquisition->max_acq_time / 60000 , 2, 10, QChar("0"))
-                            .arg((speckle->acquisition->max_acq_time % 60000) / 1000, 2, 10, QChar("0"));
+                            .arg(t_elapsed / 60000 , 2, 10, QLatin1Char('0'))
+                            .arg((t_elapsed % 60000) / 1000, 2, 10, QLatin1Char('0'))
+                                                          .arg(speckle->acquisition->max_acq_time / 60000 , 2, 10, QLatin1Char('0'))
+                              .arg((speckle->acquisition->max_acq_time % 60000) / 1000, 2, 10, QLatin1Char('0'));
         acquisition_progressBar->setFormat(format);
     }
     else if(speckle->acquisition->stop_condition == AcquisitionClass::ACQUIRE_FOREVER)
     {
         continuous_acq_label->setText(QString("%1 frames (%2:%3) ")
                                         .arg(speckle->theCamera->img_acquired)
-                                        .arg(t_elapsed / 60000 , 2, 10, QChar("0"))
-                                        .arg((t_elapsed % 60000) / 1000, 2, 10, QChar("0")));
+                                        .arg(t_elapsed / 60000 , 2, 10, QLatin1Char('0'))
+                                        .arg((t_elapsed % 60000) / 1000, 2, 10, QLatin1Char('0')));
     }
 }
 /****************************************************************************/
@@ -1042,9 +1044,9 @@ void SpeckleWindow::exportOverlayImage(void)
 /****************************************************************************/
 void SpeckleWindow::addNewROI(QPolygonF polygon, QColor color)
 {
-    speckle->ROI_list.append(new SpeckleROIClass);
+    speckle->ROI_list.append(new SpeckleROIClass(nullptr));
     int i = speckle->ROI_list.size() - 1;
-    speckle->ROI_list[i]->polygon = polygon;
+    speckle->ROI_list[i]->setPolygon(polygon);
     speckle->ROI_list[i]->set_color(color);
     settings->RefreshROIList();
 }
@@ -1092,7 +1094,7 @@ void SpeckleWindow::showAboutDialog(void) {
     text->setWordWrap(true);
     text->setText(QString("<p>&copy; %1 The University of Texas at Austin</p>").arg(QDate::currentDate().year()) +
                   QString("<p><a href=\'https://foil.bme.utexas.edu/\'>https://foil.bme.utexas.edu/</a></p>") +
-                  QString("<p>Build %1.%2.%3").arg(VERSION_MAJOR).arg(VERSION_MINOR).arg(VERSION_BUILD) +
+                                     QString("<p>Build %1.%2.%3").arg(3).arg(1).arg(1) +
                   QString(" (%1)</p>").arg(QDate::currentDate().toString(Qt::ISODate)) +
                   QString("<p>Qt v%1</p>").arg(QT_VERSION_STR) +
                   QString("<p>CImg v%1</p>").arg(cimg_version) +

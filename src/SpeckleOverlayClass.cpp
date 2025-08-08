@@ -27,7 +27,7 @@ void SpeckleOverlayClass::CreateOverlayImage(CImg<unsigned char> raw_img,
                                              CImg<float> tc_img) {
 
     float scaled, max_thresh, min_thresh;
-	int color_ind;
+    int color_ind;
 
     // Resize images
    // bg_img.resize(sc_img.width(), sc_img.height());
@@ -36,11 +36,11 @@ void SpeckleOverlayClass::CreateOverlayImage(CImg<unsigned char> raw_img,
 
     // Select background image
     if(bg_src == SRC_RAW)
-        bg_img = raw_img.resize(sc_img);
+        bg_img.resize(sc_img.width(), sc_img.height(), 1, 1, 0); cimg_forXY(bg_img, xx, yy) { bg_img(xx,yy) = raw_img(xx,yy); }
     else if(bg_src == SRC_SC)
-		bg_img = sc_img;
-	else if(bg_src == SRC_TC)
-		bg_img = tc_img;
+        bg_img = sc_img;
+    else if(bg_src == SRC_TC)
+        bg_img = tc_img;
     else if(bg_src == SRC_NONE)
         bg_img.resize(sc_img.width(), sc_img.height(),1,1,-1).fill(0);
 
@@ -79,23 +79,23 @@ void SpeckleOverlayClass::CreateOverlayImage(CImg<unsigned char> raw_img,
 
     // Set absolute overlay thresholds
     if(threshold_type == THRESH_BETWEEN) {
-		max_thresh = over_max;
-		min_thresh = over_min;
+        max_thresh = over_max;
+        min_thresh = over_min;
     } else if(threshold_type == THRESH_SAT_ABOVE) {
         max_thresh = 1e30f;
-		min_thresh = over_min;
+        min_thresh = over_min;
     } else if(threshold_type == THRESH_SAT_BELOW) {
-		max_thresh = over_max;
+        max_thresh = over_max;
         min_thresh = -1e30f;
-	}
+    }
 
     // Select overlay image
     if(over_src == SRC_RAW)
-        over_img = raw_img.resize(over_img);
+        over_img.resize(over_img.width(), over_img.height(), 1, 1, 0); cimg_forXY(over_img, xx, yy) { over_img(xx,yy) = raw_img(xx,yy); }
     else if(over_src == SRC_SC)
-		over_img = sc_img;
-	else if(over_src == SRC_TC)
-		over_img = tc_img;
+        over_img = sc_img;
+    else if(over_src == SRC_TC)
+        over_img = tc_img;
     else if(over_src == SRC_NONE)
         return;
        // over_img.resize(output_img.width(), output_img.height(),1,1,-1);
@@ -176,7 +176,7 @@ void SpeckleOverlayClass::CreateOverlayImage(CImg<unsigned char> raw_img,
                 output_img(x,y,2) = (1-alpha)*output_img(x,y,2) + (alpha)*over_cmap(color_ind,2);
             }
         }
-	}
+    }
 }
 /*******************************************************/
 void SpeckleOverlayClass::setBackgroundSource(int src) {
@@ -262,7 +262,7 @@ void SpeckleOverlayClass::ComputeTransform(CImgList<float> pts1, CImgList<float>
 
 }
 /*******************************************************/
-void SpeckleOverlayClass::GeneratePixelMapping(CImg<unsigned char> img1, CImg<unsigned char> img2,
+void SpeckleOverlayClass::GeneratePixelMapping(CImg<unsigned char> img1, CImg<float> img2,
                                                CImg<float> tform, CImg<int> *pixel_mapping)
 {
     // compute pixel mapping from img2 to img1. For each pixel in img1 (eg video in), determine

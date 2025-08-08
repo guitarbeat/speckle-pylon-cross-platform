@@ -12,6 +12,15 @@
 
 #include "cameradescription.h"
 
+// Forward declare CImg types to avoid heavy include
+namespace cimg_library {
+    template<typename T> class CImg;
+    template<typename T> class CImgList;
+}
+using cimg_library::CImg;
+using cimg_library::CImgList;
+#include "CImg.h"
+
 #define CAMERA_NONE 0
 #define CAMERA_PYLON 1
 #define CAMERA_NIIMAQDX 2
@@ -19,46 +28,74 @@
 #define CAMERA_FRAMEGRABBER 4
 #define CAMERA_THORLABS 5
 
+class AcquisitionClass;
+class ImageGenerator;
+
 class Camera : public QObject
 {
     Q_OBJECT
 public:
     Camera();
-    int initialize(unsigned short *width, unsigned short *height,
-                            unsigned short *top, unsigned short *left, float *exposure_time,
-                            unsigned short *max_w, unsigned short *max_h, unsigned short *bits_per_pixel,
-                           QString *name, QString *descr, unsigned short *cam_type, int *color_depth);
-    void SetExposureTime(float exp_ms);
-    void SetAOI(unsigned short AOI_top, unsigned short AOI_left,
-                        unsigned short AOI_width, unsigned short AOI_height);
-    void SetTrigger(QString trigger_str);
-    void SetBitDepth(QString bit_depth_str);
-    int InitializeAcquisition(int Nframes);
-    void AcquireImages(int Nframes, long *img_acquired,
-                               unsigned char **raw_images,
-                               float *acquisition_times,
-                               int write_mode, int acquire_flag, QElapsedTimer *timer);
-    void finish_acquisition(void);
-    void GetPixelFormats(QStringList *pix_list);
-    void SetDeviceNumber(int dev_num);
 
-    unsigned short *im_w, *im_h, *im_top, *im_left;
-    float *exp_time;
-    unsigned short *max_width, *max_height;
-    unsigned short *bit_depth;
-    QString *camera_name, *camera_description;
-    unsigned short *cam_type;
-    int *color_planes;
+    // Base API (virtual so derived classes can override)
+    virtual void openCamera(int devNum = 0);
+    virtual void initialize(void);
+    virtual bool isOpened(void);
+    virtual void setAOI(int top, int left, int width, int height);
+    virtual void SetCameraROI(void);
+    virtual void SetCameraExposureTime(float exp_ms);
+    virtual void SetCameraTrigger(QString trigger_str);
+    virtual void SetBitDepth(unsigned short new_bit_depth);
+    virtual void SetBitDepth(QString bit_depth_str);
+    virtual void SetCameraGain(void);
+    void setMaxNumBuffers(int n);
+
+    virtual int initialize_acquisition(AcquisitionClass *acq, unsigned char **buffer_list, QVector<float> *acq_t);
+    virtual void acquireImages(int Nframes);
+    virtual void acquireImages(int Nframes, unsigned char **image_buffers);
+    virtual void acquireImage(CImg<unsigned char> *img);
+    virtual void acquireImages(CImgList<unsigned char> *img_list);
+    virtual void acquireImagesAsync(void);
+    virtual void stopAcquisition(void);
+    virtual void cleanup(void);
+    void acquireAsyncCompleted(void);
+
+    void finish_acquisition(unsigned char *buf);
+    void save_acquisition_timing(QString fname, float *acq_times, int N);
+    virtual QString getCameraInfo(void);
+    void GetPixelFormats(QStringList *pix_list);
+    void SetBytesPerPixel();
+
+    // Public state
+    bool color_camera;
+    int color_planes;
+    QString camera_name, camera_description;
+    int camera_type;
+
+    int max_width, max_height;
+    int top, left;
+    int im_w, im_h;
+    int bit_depth;
+    int bytes_pixel;
+    float exp_time;
+    int num_live_buffers;
+
+    int img_acquired;
+    float acquire_fps;
+
     bool camera_specified;
     QString ip_address;
 
 signals:
     void postSpeckleMessage(QString msg);
+    void acquisitionFinished();
 
-public slots:
-
-private:
-
+protected:
+    int max_buffers;
+    AcquisitionClass *acq_settings;
+    unsigned char **buffers;
+    QVector<float> *acq_times;
+    ImageGenerator *ImgGeneratorThread;
 };
 
 #endif // CAMERACLASS_H
