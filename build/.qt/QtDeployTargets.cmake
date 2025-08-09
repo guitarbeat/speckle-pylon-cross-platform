@@ -1,0 +1,2 @@
+set(__QT_DEPLOY_TARGET_speckle_FILE /workspace/build/speckle)
+set(__QT_DEPLOY_TARGET_speckle_TYPE EXECUTABLE)

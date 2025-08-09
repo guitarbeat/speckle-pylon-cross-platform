@@ -1,5 +1,7 @@
 #include <string.h>
+#ifdef _WIN32
 #include <windows.h>
+#endif
 #include "WriteThread.h"
 #include "speckle.h"
 extern SpeckleClass *speckle;

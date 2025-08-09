@@ -103,7 +103,12 @@ void SpeckleClass::setSCControlPoints(QPolygonF poly)
     for(i=0;i<3; i++)
     {
         const QPointF p = poly[i];
-        sc_ctrl_pts.insert(CImg<>::vector(p.x(),p.y()),i);
+        {
+            CImg<float> vec(1,1,1,2);
+            vec(0,0,0,0) = static_cast<float>(p.x());
+            vec(0,0,0,1) = static_cast<float>(p.y());
+            sc_ctrl_pts.insert(vec,i);
+        }
     }
 
     if(sc_ctrl_pts.size()>2 && video_in_ctrl_pts.size()>2)
@@ -122,7 +127,12 @@ void SpeckleClass::setVideoInControlPoints(QPolygonF poly)
     for(i=0;i<3; i++)
     {
         const QPointF p = poly[i];
-        video_in_ctrl_pts.insert(CImg<>::vector(p.x(),p.y()),i);
+        {
+            CImg<float> vec(1,1,1,2);
+            vec(0,0,0,0) = static_cast<float>(p.x());
+            vec(0,0,0,1) = static_cast<float>(p.y());
+            video_in_ctrl_pts.insert(vec,i);
+        }
     }
 
     if(sc_ctrl_pts.size()>2 && video_in_ctrl_pts.size()>2)
@@ -723,13 +733,10 @@ void SpeckleClass::AddToLogFile(QString str)
 QString SpeckleClass::GetDateTimeFilename(void)
 {
     char tmp_str[512];
-    SYSTEMTIME the_time;
-
-    GetLocalTime(&(the_time));
-
-    // form filename
-    sprintf(tmp_str, "img.%04i%02i%02i%02i%02i%02i%03i",the_time.wYear, the_time.wMonth,
-            the_time.wDay, the_time.wHour, the_time.wMinute, the_time.wSecond, (int)(the_time.wMilliseconds));
+    // Use Qt date-time on all platforms
+    const QDateTime now = QDateTime::currentDateTime();
+    const QString stamp = now.toString("yyyyMMddhhmmsszzz");
+    snprintf(tmp_str, sizeof(tmp_str), "img.%s", stamp.toUtf8().constData());
     return(QString(tmp_str));
 }
 /*************************************************************************/

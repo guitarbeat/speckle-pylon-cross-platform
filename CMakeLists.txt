@@ -5,6 +5,12 @@ project(speckle LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# Feature toggles
+option(SPECKLE_USE_PYLON "Enable Basler Pylon camera support" OFF)
+set(SPECKLE_PYLON_INTERFACE "USB3" CACHE STRING "Pylon interface to use: USB3, GIGE, or UNIVERSAL")
+set_property(CACHE SPECKLE_PYLON_INTERFACE PROPERTY STRINGS USB3 GIGE UNIVERSAL)
+option(SPECKLE_USE_NIDAQ "Enable NI-DAQ features" OFF)
+
 find_package(Qt6 REQUIRED COMPONENTS Core Gui Widgets Charts OpenGL Core5Compat)
 find_package(OpenCV REQUIRED)
 
@@ -14,19 +20,68 @@ add_executable(speckle
     src/specklewindow.h
     src/camera.cpp
     src/camera.h
-    src/DaqThread.cpp
-    src/DaqThread.h
-    src/DOPulseGenerator.cpp
-    src/DOPulseGenerator.h
-    src/FrameGrabberClass.cpp
-    src/FrameGrabberClass.h
     src/speckle.cpp
     src/speckle.h
     src/SpeckleROIClass.cpp
     src/SpeckleROIClass.h
+    src/SpeckleOverlayClass.cpp
+    src/SpeckleOverlayClass.h
     src/speckle_processing.cpp
     src/speckle_processing.h
+    src/speckledisplay.cpp
+    src/speckledisplay.h
+    src/ProcessingThread.cpp
+    src/ProcessingThread.h
+    src/WriteThread.cpp
+    src/WriteThread.h
+    src/WriteSCThread.cpp
+    src/WriteSCThread.h
+    src/HistogramWindow.cpp
+    src/HistogramWindow.h
+    src/acquisitionclass.cpp
+    src/acquisitionclass.h
+    src/cameradescription.cpp
+    src/cameradescription.h
+    src/icons.qrc
 )
+
+if(SPECKLE_USE_NIDAQ)
+    target_compile_definitions(speckle PRIVATE USE_NIDAQ)
+    target_sources(speckle PRIVATE
+        src/DaqThread.cpp
+        src/DaqThread.h
+        src/DOPulseGenerator.cpp
+        src/DOPulseGenerator.h
+    )
+endif()
+
+# Conditionally add Pylon sources and definitions
+if(SPECKLE_USE_PYLON)
+    target_compile_definitions(speckle PRIVATE USE_PYLON)
+    if(SPECKLE_PYLON_INTERFACE STREQUAL "USB3")
+        target_compile_definitions(speckle PRIVATE PYLON_USE_USB3)
+    elseif(SPECKLE_PYLON_INTERFACE STREQUAL "GIGE")
+        target_compile_definitions(speckle PRIVATE PYLON_USE_GIGE)
+    elseif(SPECKLE_PYLON_INTERFACE STREQUAL "UNIVERSAL")
+        target_compile_definitions(speckle PRIVATE PYLON_USE_UNIVERSAL)
+    endif()
+
+    target_sources(speckle PRIVATE
+        src/pylonclass.cpp
+        src/pylonclass.h
+        src/pylonacquireasync.cpp
+        src/pylonacquireasync.h
+    )
+
+    # Try to locate Pylon SDK if available
+    find_package(Pylon QUIET)
+    if(Pylon_FOUND)
+        target_link_libraries(speckle PRIVATE Pylon::Pylon)
+        message(STATUS "Pylon found: enabling Pylon support")
+    else()
+        message(WARNING "SPECKLE_USE_PYLON=ON but Pylon SDK was not found. Provide a Pylon CMake package or set PYLON_ROOT and add include/lib paths as needed.")
+    endif()
+endif()
 
 target_include_directories(speckle PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src
@@ -34,6 +89,7 @@ target_include_directories(speckle PRIVATE
     ${OpenCV_INCLUDE_DIRS}
 )
 
+# Common Qt/OpenCV link
 target_link_libraries(speckle PRIVATE
     Qt6::Core
     Qt6::Gui
@@ -50,9 +106,12 @@ set_target_properties(speckle PROPERTIES
     AUTOUIC ON
 )
 
-# Add these for debugging Qt issues
-add_compile_definitions(QT_DEPRECATED_BY=QT_VERSION_CHECK(6,0,0))
-add_compile_definitions(QT_DISABLE_DEPRECATED_BEFORE=QT_VERSION_CHECK(6,0,0))
+# Define deprecation flags using numeric constants to avoid function-style macros on command line
+# 0xMMNNPP for version MM.NN.PP
+target_compile_definitions(speckle PRIVATE
+    QT_DISABLE_DEPRECATED_BEFORE=0x060000
+    QT_DEPRECATED_WARNINGS_SINCE=0x060000
+)
 
 # Ensure position independent code for shared libraries
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")

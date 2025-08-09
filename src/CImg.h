@@ -162,13 +162,14 @@ public:
     // Paste image at (x0,y0)
     void draw_image(int x0, int y0, const CImg<T>& img) {
         for (int cc = 0; cc < std::min(c_, img.c_); ++cc)
-            for (int y = 0; y < img.h_; ++y) {
-                int yy = y0 + y; if (yy < 0 || yy >= h_) continue;
-                for (int x = 0; x < img.w_; ++x) {
-                    int xx = x0 + x; if (xx < 0 || xx >= w_) continue;
-                    (*this)(xx, yy, 0, cc) = img(x, y, 0, cc);
+            for (int zz = 0; zz < img.d_; ++zz)
+                for (int y = 0; y < img.h_; ++y) {
+                    int yy = y0 + y; if (yy < 0 || yy >= h_) continue;
+                    for (int x = 0; x < img.w_; ++x) {
+                        int xx = x0 + x; if (xx < 0 || xx >= w_) continue;
+                        (*this)(xx, yy, 0, cc) = img(x, y, 0, cc);
+                    }
                 }
-            }
     }
 
     // Crop ROI [x1,y1]..[x2,y2] inclusive; depth/channels preserved
@@ -201,19 +202,23 @@ public:
                 // horizontal
                 for (int y = 0; y < h_; ++y) {
                     for (int x = 0; x < w_; ++x) {
-                        int x1 = std::max(0, x - r), x2 = std::min(w_ - 1, x + r);
-                        double sum = 0.0; int cnt = 0;
-                        for (int xx = x1; xx <= x2; ++xx) { sum += (*this)(xx, y, zz, cc); ++cnt; }
-                        tmp(x, y, zz, cc) = static_cast<T>(sum / std::max(1, cnt));
+                        int x0 = std::max(0, x - r);
+                        int x1 = std::min(w_ - 1, x + r);
+                        long count = (x1 - x0 + 1);
+                        long sum = 0;
+                        for (int xx = x0; xx <= x1; ++xx) sum += (*this)(xx, y, zz, cc);
+                        tmp(x, y, zz, cc) = static_cast<T>(sum / std::max<long>(1, count));
                     }
                 }
                 // vertical
                 for (int y = 0; y < h_; ++y) {
                     for (int x = 0; x < w_; ++x) {
-                        int y1 = std::max(0, y - r), y2 = std::min(h_ - 1, y + r);
-                        double sum = 0.0; int cnt = 0;
-                        for (int yy = y1; yy <= y2; ++yy) { sum += tmp(x, yy, zz, cc); ++cnt; }
-                        (*this)(x, y, zz, cc) = static_cast<T>(sum / std::max(1, cnt));
+                        int y0 = std::max(0, y - r);
+                        int y1 = std::min(h_ - 1, y + r);
+                        long count = (y1 - y0 + 1);
+                        long sum = 0;
+                        for (int yy = y0; yy <= y1; ++yy) sum += tmp(x, yy, zz, cc);
+                        (*this)(x, y, zz, cc) = static_cast<T>(sum / std::max<long>(1, count));
                     }
                 }
             }
@@ -352,14 +357,10 @@ private:
     int w_, h_, d_, c_;
     std::vector<T> buf_;
 
-    size_t size() const { return static_cast<size_t>(w_) * h_ * std::max(1, d_) * std::max(1, c_); }
-
-    size_t plane_stride() const { return static_cast<size_t>(w_) * h_; }
-    size_t depth_stride() const { return plane_stride(); }
-    size_t channel_stride() const { return plane_stride() * std::max(1, d_); }
+    size_t size() const { return static_cast<size_t>(w_) * h_ * d_ * c_; }
 
     size_t offset(int x, int y, int z, int c) const {
-        return static_cast<size_t>(c) * channel_stride() + static_cast<size_t>(z) * depth_stride() + static_cast<size_t>(y) * w_ + x;
+        return (((static_cast<size_t>(c) * d_ + z) * h_ + y) * w_ + x);
     }
 
     T& at(int x, int y, int z, int c) { return buf_[offset(x, y, z, c)]; }
@@ -379,14 +380,13 @@ private:
             for (int zz = 0; zz < d_; ++zz)
                 for (int y = 0; y < h_; ++y)
                     for (int x = 0; x < w_; ++x)
-                        out(h_ - 1 - y, x, zz, cc) = (*this)(x, y, zz, cc);
+                        out(y, w_ - 1 - x, zz, cc) = (*this)(x, y, zz, cc);
         *this = std::move(out);
     }
 };
 
-// Very small list wrapper for images
-
-template <typename T>
+// Minimal list of images
+template<typename T>
 class CImgList {
 public:
     CImgList() = default;
@@ -394,38 +394,33 @@ public:
     size_t size() const { return images_.size(); }
     void clear() { images_.clear(); }
 
-    // Remove count images starting from index pos (bounds clamped)
+    CImg<T>& operator[](size_t idx) { return images_[idx]; }
+    const CImg<T>& operator[](size_t idx) const { return images_[idx]; }
+
+    CImg<T> operator()(size_t idx) const { return images_[idx]; }
+
+    void insert(size_t n) { images_.insert(images_.end(), n, CImg<T>()); }
+    void insert(size_t index, size_t /*count*/) { images_.insert(images_.begin() + index, CImg<T>()); }
+
+    // compatibility: insert image at index
+    void insert(const CImg<T>& img, size_t index) { images_.insert(images_.begin() + index, img); }
+
+    // add missing at() used in code
+    CImg<T>& at(size_t i) { return images_.at(i); }
+    const CImg<T>& at(size_t i) const { return images_.at(i); }
+
+    // remove count images starting at pos
     void remove(size_t pos, size_t count) {
         if (pos >= images_.size()) return;
         size_t end = std::min(images_.size(), pos + count);
         images_.erase(images_.begin() + pos, images_.begin() + end);
     }
 
-    // Assign count images of given size
+    // assign count images of given size
     void assign(size_t count, int w, int h, int d = 1, int c = 1) {
         images_.clear();
         images_.resize(count);
-        for (auto& im : images_) im.resize(w, h, d, c);
-    }
-
-    // Insert n default-constructed images at end
-    void insert(size_t n) { images_.insert(images_.end(), n, CImg<T>()); }
-
-    // Ensure list has at least index+1 items; ignore count
-    void insert(size_t index, size_t /*count*/) {
-        if (images_.size() <= index) images_.resize(index + 1);
-    }
-
-    CImg<T>& operator[](size_t i) { return images_[i]; }
-    const CImg<T>& operator[](size_t i) const { return images_[i]; }
-
-    CImg<T>& at(size_t i) { return images_.at(i); }
-    const CImg<T>& at(size_t i) const { return images_.at(i); }
-
-    // Function-call style accessor used by code: ensures size and returns ref
-    CImg<T>& operator()(size_t i) {
-        if (images_.size() <= i) images_.resize(i + 1);
-        return images_[i];
+        for (auto &im : images_) im.resize(w, h, d, c);
     }
 
 private:

@@ -1,0 +1,4 @@
+# Hashes of file build rules.
+57c0c3cc559931cc97b684c08b8fa404 CMakeFiles/speckle_autogen
+4971bed52df9e8eaf207318f3fd483aa speckle_autogen/UVLADIE3JM/qrc_icons.cpp
+d859db0ff7d5387288b2b546e4719cdf speckle_autogen/timestamp
