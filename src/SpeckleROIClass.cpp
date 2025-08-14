@@ -8,6 +8,13 @@ SpeckleROIClass::SpeckleROIClass(void) {
     black[0] = 0; black[1] = 0; black[2] = 0;
 }
 /*******************************************************/
+SpeckleROIClass::SpeckleROIClass(QObject *parent) : QObject(parent) {
+    show = true;
+    opacity = 0.5f;
+    white[0] = 255; white[1] = 255; white[2] = 255;
+    black[0] = 0; black[1] = 0; black[2] = 0;
+}
+/*******************************************************/
 void SpeckleROIClass::set_color(QColor c) {
     int r, g, b;
 

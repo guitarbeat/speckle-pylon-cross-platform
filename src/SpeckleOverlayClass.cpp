@@ -35,8 +35,10 @@ void SpeckleOverlayClass::CreateOverlayImage(CImg<unsigned char> raw_img,
    // output_img.resize(sc_img.width(), sc_img.height(), 1, 3); // rgb image
 
     // Select background image
-    if(bg_src == SRC_RAW)
-        bg_img.resize(sc_img.width(), sc_img.height(), 1, 1, 0); cimg_forXY(bg_img, xx, yy) { bg_img(xx,yy) = raw_img(xx,yy); }
+    if(bg_src == SRC_RAW) {
+        bg_img.resize(sc_img.width(), sc_img.height(), 1, 1, 0);
+        cimg_forXY(bg_img, xx, yy) { bg_img(xx,yy) = raw_img(xx,yy); }
+    }
     else if(bg_src == SRC_SC)
         bg_img = sc_img;
     else if(bg_src == SRC_TC)
@@ -90,8 +92,10 @@ void SpeckleOverlayClass::CreateOverlayImage(CImg<unsigned char> raw_img,
     }
 
     // Select overlay image
-    if(over_src == SRC_RAW)
-        over_img.resize(over_img.width(), over_img.height(), 1, 1, 0); cimg_forXY(over_img, xx, yy) { over_img(xx,yy) = raw_img(xx,yy); }
+    if(over_src == SRC_RAW) {
+        over_img.resize(over_img.width(), over_img.height(), 1, 1, 0);
+        cimg_forXY(over_img, xx, yy) { over_img(xx,yy) = raw_img(xx,yy); }
+    }
     else if(over_src == SRC_SC)
         over_img = sc_img;
     else if(over_src == SRC_TC)

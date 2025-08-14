@@ -1,6 +1,11 @@
 #include <QString>
 #include "flsci.h"
+#ifdef _WIN32
 #include "windows.h"
+#else
+#include <cstdint>
+struct SYSTEMTIME { uint16_t wYear, wMonth, wDayOfWeek, wDay, wHour, wMinute, wSecond, wMilliseconds; };
+#endif
 #include "CImg.h"
 using namespace cimg_library;
 #ifdef SPECKLE_USE_OPENCV

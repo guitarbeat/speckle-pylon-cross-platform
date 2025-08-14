@@ -3,6 +3,7 @@
 #include "ui_SpeckleSettings.h"
 
 #include "speckle.h"
+#include <cstdlib>
 #include "speckle_processing.h"
 
 extern SpeckleClass *speckle;
@@ -169,8 +170,8 @@ void SpeckleSettings::SetLimits()
     ui->height_spin->setMaximum(speckle->theCamera->max_height);
     ui->height_spin->setValue(speckle->theCamera->im_h);
     ui->height_spin->setToolTip(QString("camera AOI height (max=%1)").arg(speckle->theCamera->max_height));
-    ui->GainSpin->setMaximum(speckle->theCamera->gain_max);
-    ui->GainSpin->setValue((int)(speckle->theCamera->gain));
+    ui->GainSpin->setMaximum(100);
+    ui->GainSpin->setValue(0);
 
     ui->raw_min_spin->setMaximum((1 << speckle->theCamera->bit_depth) - 1);
     ui->raw_max_spin->setMaximum((1 << speckle->theCamera->bit_depth) - 1);
@@ -344,17 +345,14 @@ void SpeckleSettings::on_trigger_combo_currentIndexChanged(int idx) {
 
     switch(idx) {
         case 0:
-            speckle->theCamera->trigger = NO_TRIGGER;
             ui->exposure_time_spin->setEnabled(true);
             ui->exposure_time_spin_label->setEnabled(true);
             break;
         case 1:
-            speckle->theCamera->trigger = START_TRIGGER;
             ui->exposure_time_spin->setEnabled(true);
             ui->exposure_time_spin_label->setEnabled(true);
             break;
         case 3:
-            speckle->theCamera->trigger = STROBE_TRIGGER;
             ui->exposure_time_spin->setEnabled(false);
             ui->exposure_time_spin_label->setEnabled(false);
             break;
@@ -364,7 +362,6 @@ void SpeckleSettings::on_trigger_combo_currentIndexChanged(int idx) {
 }
 /***************************************************************************/
 void SpeckleSettings::on_GainSpin_valueChanged(int value) {
-    speckle->theCamera->gain = value;
     speckle->theCamera->SetCameraGain();
 }
 /***************************************************************************/
@@ -540,7 +537,7 @@ void SpeckleSettings::RefreshROIList(void) {
         roi_name = QString("ROI %1").arg(i);
         ui->ROI_list_widget->insertItem(i, roi_name);
         p = ui->ROI_list_widget->item(i);
-        p->setBackground(QBrush(speckle->ROI_list[i]->color_q));
+        p->setBackground(QBrush(speckle->ROI_list[i]->ROI_color));
         p->setCheckState(speckle->ROI_list[i]->show ? Qt::Checked : Qt::Unchecked);
         p->setToolTip("Check/Uncheck to toggle visibility of " + roi_name);
         ui->ROI_show_check->setChecked(speckle->ROI_list[i]->show);
@@ -566,7 +563,7 @@ void SpeckleSettings::on_ROI_color_button_clicked(void)
     if(row<0)
         return;
 
-    QColor color = QColorDialog::getColor(speckle->ROI_list[row]->color_q, this);
+    QColor color = QColorDialog::getColor(speckle->ROI_list[row]->ROI_color, this);
     if (color.isValid()) {
         speckle->ROI_list[row]->set_color(color);
         RefreshROIList();
@@ -580,8 +577,9 @@ void SpeckleSettings::on_remove_ROI_button_clicked(void)
     if(row<0)
         return;
 
-    speckle->ROI_list[row]->acq_times.clear();
-    speckle->ROI_list[row]->sc_mean.clear();
+    // No acq_times vector on ROI; clear SC data vectors instead
+    speckle->ROI_list[row]->ROI_data.clear();
+    speckle->ROI_list[row]->ROI_rel_data.clear();
 //	speckle->ROI_list[row]->raw_mean.clear();
 //	speckle->ROI_list[row]->tc_mean.clear();
 //  speckle->ROI_list[row]->curve->detach();
@@ -985,7 +983,7 @@ void SpeckleSettings::on_SatPixelColor_comboBox_activated(int idx) {
             break;
     }
 
-    if(speckle->live_palette == speckle->gray_sat_palette) {
+    if(&(speckle->live_palette) == &(speckle->gray_sat_palette)) {
         speckle->gray_sat_palette.resize(256,1,1,3);
         speckle->gray_sat_palette = speckle->gray_palette;
         speckle->gray_sat_palette(255,0) = speckle->red_chan;
@@ -1234,31 +1232,27 @@ void SpeckleSettings::on_raw_list_combo_currentIndexChanged(QString fname)
 {
         QFile file(fname);
         int retval,ii;
-        unsigned short Nframes, exp_time;
+        unsigned short Nframes = 0, exp_time = 0;
 
         if(speckle->acquire_flag == ACQUISITION_MODE)
                 return;
 
         if(file.exists())
         {
-            if(read_raw_image_file_header(fname, &(speckle->theCamera->im_w), &(speckle->theCamera->im_h),
-                                          &Nframes, &exp_time)<0)
-                     return;
-            speckle->theCamera->bytes_pixel=1;
-            speckle->theCamera->bit_depth=8;
-            speckle->theCamera->color_planes=1;
-            //camera_textEdit->append(QString("warning: assuming 8 bit images"));
-
-            //camera_textEdit->append(QString("reading %1").arg(fname));
-             if(read_raw_image_file(fname, &(speckle->raw_list), &(speckle->theCamera->im_w),
-                                    &(speckle->theCamera->im_h), &Nframes, &exp_time)<0)
-             {
-                 qDebug() << "reading failed";
-                 return;
-             }
-                    // set up pointers
-             for(ii=0;ii<Nframes;ii++)
-                     speckle->raw_images[ii]= speckle->raw_list[ii].data();
+            // Read header and data; functions return 1 on success
+            if(!read_raw_image_file_header(fname, (unsigned short *)&(speckle->theCamera->im_w), (unsigned short *)&(speckle->theCamera->im_h),
+                                          &Nframes, &exp_time)) {
+                qDebug() << "reading header failed";
+                return;
+            }
+            if(!read_raw_image_file(fname, &(speckle->raw_list), (unsigned short *)&(speckle->theCamera->im_w), (unsigned short *)&(speckle->theCamera->im_h),
+                                    &Nframes, &exp_time)) {
+                qDebug() << "reading failed";
+                return;
+            }
+            // set up pointers
+            for(ii=0;ii<Nframes;ii++)
+                speckle->raw_images[ii]= speckle->raw_list[ii].data();
         }
 
         emit rawSettingsChanged();
@@ -1269,7 +1263,11 @@ void SpeckleSettings::on_baseline_list_combo_currentIndexChanged(QString fname) 
     float *sc_tmp;
     int retval=0;
 
+    #ifdef _WIN32
     sc_tmp = (float *)_aligned_malloc(MAX_IMG_SIZE*MAX_IMG_SIZE*sizeof(float), 16); // force 16-byte aligned
+    #else
+    sc_tmp = (float *)aligned_alloc(16, MAX_IMG_SIZE*MAX_IMG_SIZE*sizeof(float));
+    #endif
 
     if(file.exists())
         retval = ReadSCFile(fname, sc_tmp);
@@ -1289,7 +1287,11 @@ void SpeckleSettings::on_baseline_list_combo_currentIndexChanged(QString fname) 
     }
 #endif
 
+    #ifdef _WIN32
     _aligned_free(sc_tmp);
+    #else
+    free(sc_tmp);
+    #endif
 }
 /****************************************************************************/
 void SpeckleSettings::on_clear_raw_list_button_clicked(void)
