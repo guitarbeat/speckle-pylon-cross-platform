@@ -5,6 +5,7 @@
 #include "autumn_colormap.h"
 #include "pmkmp_colormap.h"
 #include "greens_colormap.h"
+#include <QFile>
 
 //Q_DECLARE_METATYPE(QCameraInfo)
 
@@ -316,6 +317,7 @@ void SpeckleClass::findAvailableCameras(void)
 #ifdef SPECKLE_USE_OPENCV
 QStringList SpeckleClass::getVideoDeviceNames(void)
 {
+#ifdef _WIN32
     // Based on Microsoft documentation for "Selecting a Capture Device"
     // https://docs.microsoft.com/en-us/windows/win32/directshow/selecting-a-capture-device
 
@@ -362,6 +364,21 @@ QStringList SpeckleClass::getVideoDeviceNames(void)
     }
 
     return devices;
+#else
+    // Linux fallback: enumerate a few /dev/videoX and return generic names
+    QStringList devices;
+    for (int idx = 0; idx < 10; ++idx) {
+        QString path = QString("/dev/video%1").arg(idx);
+        if (QFile::exists(path)) {
+            devices << QString("Video %1").arg(idx);
+        }
+    }
+    if (devices.isEmpty()) {
+        // As a last resort, return placeholders for first few indices
+        for (int idx = 0; idx < 3; ++idx) devices << QString("Video %1").arg(idx);
+    }
+    return devices;
+#endif
 }
 #endif
 /***************************************************************************/

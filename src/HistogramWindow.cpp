@@ -127,8 +127,16 @@ void HistogramWindow::closeEvent(QCloseEvent *event)
 void HistogramWindow::updateRawHistogram(CImg<float> *histogram)
 {
     QBarSet *data = new QBarSet("Raw");
-    cimg_for(*histogram, ptr, float)
-        *data << *ptr;
+    int peakIndex = 0;
+    float maxCount = -1.0f;
+    for (int i = 0; i < histogram->width(); ++i) {
+        float v = (*histogram)(i);
+        *data << v;
+        if (v > maxCount) {
+            maxCount = v;
+            peakIndex = i;
+        }
+    }
     data->setBorderColor(Qt::transparent);
 
     rawSeries->clear();
@@ -138,17 +146,24 @@ void HistogramWindow::updateRawHistogram(CImg<float> *histogram)
     rawChart->removeSeries(rawSeries);
     rawChart->addSeries(rawSeries);
 
-    CImg<double> stats = histogram->get_stats();
     qreal saturated = data->at(data->count() - 1);
     rawTitle->setText(QString("Raw (Peak = %1, Saturated = %2)")
-                      .arg(QString::number(stats(8)), QString::number(saturated)));
+                      .arg(QString::number(peakIndex), QString::number(saturated)));
 }
 /****************************************************************************/
 void HistogramWindow::updateSCHistogram(CImg<float> *histogram)
 {
     QBarSet *data = new QBarSet("Raw");
-    cimg_for(*histogram, ptr, float)
-        *data << *ptr;
+    int peakIndex = 0;
+    float maxCount = -1.0f;
+    for (int i = 0; i < histogram->width(); ++i) {
+        float v = (*histogram)(i);
+        *data << v;
+        if (v > maxCount) {
+            maxCount = v;
+            peakIndex = i;
+        }
+    }
     data->setBorderColor(Qt::transparent);
 
     scSeries->clear();
@@ -158,9 +173,8 @@ void HistogramWindow::updateSCHistogram(CImg<float> *histogram)
     scChart->removeSeries(scSeries);
     scChart->addSeries(scSeries);
 
-    CImg<double> stats = histogram->get_stats();
     scTitle->setText(QString("Speckle Contrast (Peak = %1)")
-                      .arg(stats(8)/255.0, 0, 'f', 2));
+                      .arg(QString::number(static_cast<double>(peakIndex) / 255.0, 'f', 2)));
 }
 /****************************************************************************/
 void HistogramWindow::updateRawRange(int Imin, int Imax)
