@@ -58,7 +58,7 @@ void VideoInThread::run()
             }
         }
         else {
-            Sleep(5);
+            QThread::msleep(5);
         }
 
         if(speckle->acquire_flag==IDLE_MODE)

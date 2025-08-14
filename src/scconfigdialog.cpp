@@ -158,7 +158,7 @@ void SCConfigDialog::on_loadVideoTform_pushButton_clicked(void)
     if(file.isEmpty())
         return;
     if(speckle->overlays.setTransformFromFile(file))
-        speckle->overlays.GeneratePixelMapping(speckle->captured_rgb, speckle->sc_img_rgb,
+        speckle->overlays.GeneratePixelMapping(speckle->captured_rgb, speckle->sc_imgf,
                                            speckle->VideoTform, &(speckle->VideoPixelMapping));
 
 }

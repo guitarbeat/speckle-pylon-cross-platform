@@ -90,8 +90,12 @@ void LiveImageCreator::create_live(void)
         if(Imin>0 || Imax<255)
         {
             // only scale if needed
-            CImg<float> img(speckle->live_img);
-            ScaleToMinMax(img.data(), &(speckle->live_img), Imin, Imax);
+            // Create a temporary float buffer view and scale
+            std::vector<float> tmp(static_cast<size_t>(speckle->live_img.width()*speckle->live_img.height()), 0.0f);
+            // Fill from current 8-bit image as floats
+            int idx = 0;
+            cimg_forXY(speckle->live_img,x,y) { tmp[idx++] = static_cast<float>(speckle->live_img(x,y)); }
+            ScaleToMinMax(tmp.data(), &(speckle->live_img), Imin, Imax);
         }
         speckle->live_img_rgb = speckle->live_img;
         speckle->live_img_rgb.map(speckle->live_palette);

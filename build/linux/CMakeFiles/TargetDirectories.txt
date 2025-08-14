@@ -1,0 +1,5 @@
+/workspace/build/linux/CMakeFiles/speckle.dir
+/workspace/build/linux/CMakeFiles/edit_cache.dir
+/workspace/build/linux/CMakeFiles/rebuild_cache.dir
+/workspace/build/linux/CMakeFiles/speckle_autogen_timestamp_deps.dir
+/workspace/build/linux/CMakeFiles/speckle_autogen.dir

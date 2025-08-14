@@ -43,7 +43,30 @@ add_executable(speckle
     src/cameradescription.cpp
     src/cameradescription.h
     src/icons.qrc
+    # Additional sources required by specklewindow and camera
+    src/SpeckleSettings.cpp
+    src/SpeckleSettings.h
+    src/SpeckleSettings.ui
+    src/liveimagecreator.cpp
+    src/liveimagecreator.h
+    src/scimagecreator.cpp
+    src/scimagecreator.h
+    src/overlayimagecreator.cpp
+    src/overlayimagecreator.h
+    src/imagegenerator.cpp
+    src/imagegenerator.h
+    src/openCVGrabber.cpp
+    src/openCVGrabber.h
+    src/videointhread.cpp
+    src/videointhread.h
+    src/WriteVideoThread.cpp
+    src/WriteVideoThread.h
+    src/openCVacquireasync.cpp
+    src/openCVacquireasync.h
 )
+
+# Ensure OpenCV code paths are enabled
+target_compile_definitions(speckle PRIVATE SPECKLE_USE_OPENCV)
 
 if(SPECKLE_USE_NIDAQ)
     target_compile_definitions(speckle PRIVATE USE_NIDAQ)
