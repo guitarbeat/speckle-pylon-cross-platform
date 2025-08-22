@@ -6,41 +6,38 @@ An experimental port to Qt6 and OpenCV is underway to enable Linux support. The 
 
 Developed at the University of Texas at Austin in Dr. Andrew Dunn's [_Functional Optical Imaging Laboratory_](https://foil.bme.utexas.edu/) in the Department of Biomedical Engineering.
 
+## Linux / Qt6 / OpenCV Port (experimental)
+
+The project is being ported to Qt6 and OpenCV to enable cross‑platform builds. A
+basic Linux configuration works, but feature parity with the legacy Windows
+version is still in progress. See [`PROGRESS.md`](PROGRESS.md) for up‑to‑date
+status.
+
+### Linux dependencies (Debian/Ubuntu)
+
+```
+sudo apt install build-essential cmake qt6-base-dev qt6-base-dev-tools \
+     qt6-5compat-dev libopencv-dev
+# Optional: Basler Pylon SDK for camera support
+```
+
+### Build
+
+```
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+cmake --build build -j$(nproc)
+./build/speckle
+```
+
 ## Overview
 
-* [Experimental Linux Build](#experimental-linux-build)
 * [Developing the Speckle Software](#developing-the-speckle-software)
     * [Install Prerequisites](#install-prerequisites)
     * [Optional Installations](#optional-installations)
     * [Setup Qt Project](#setup-qt-project)
     * [Building for Release](#building-for-release)
 * [Using the Speckle Software](#using-the-speckle-software)
-
-## Experimental Linux Build
-
-The cross-platform port uses CMake with Qt6 and OpenCV. These steps have been tested on Debian/Ubuntu-like distributions and remain a work in progress.
-
-### Prerequisites
-
-- Qt 6 development packages (for example: `qt6-base-dev` and `qt6-5compat-dev`)
-- OpenCV 4 development package (`libopencv-dev`)
-- CMake 3.16 or newer and a C++17 compiler
-- Optional: Basler [Pylon SDK](https://www.baslerweb.com/en/products/software/) and NI-DAQmx for camera and DAQ features
-
-### Configure and Build
-
-```bash
-git clone https://github.com/UTFOIL/speckle-pylon-cross-platform.git
-cd speckle-pylon-cross-platform
-cmake --preset linux-debug
-cmake --build --preset linux-debug
-```
-
-The resulting binary `build/linux-debug/speckle` is linked against Qt6 and OpenCV. The `CMakePresets.json` file also defines a `linux-release` preset for optimized builds. Feature toggles such as `SPECKLE_USE_PYLON` and `SPECKLE_USE_NIDAQ` can be enabled with `-D` flags when invoking `cmake --preset`.
-
-### Migration Status
-
-The Linux port replaces the original CImg dependency with a small compatibility shim and builds against Qt6 and OpenCV. OpenCV usage is currently required, and several Windows-specific paths remain guarded. Follow ongoing progress in [PROGRESS.md](PROGRESS.md).
+* [Linux Development](#linux-development)
 
 ## Developing the Speckle Software
 
@@ -146,3 +143,29 @@ git push origin --tags
 ## Using the Speckle Software
 
 See the [Speckle Software Documentation](https://utfoil.github.io/speckle-software/) website. Source located on [`docs`](https://github.com/UTFOIL/speckle-software/tree/docs) branch.
+
+## Linux Development
+
+Experimental support for building on Linux is available using CMake with Qt6 and OpenCV.
+
+### Install Dependencies
+
+On Ubuntu 22.04 or similar:
+
+```bash
+sudo apt update
+sudo apt install build-essential cmake ninja-build qt6-base-dev qt6-tools-dev libopencv-dev
+```
+
+Basler's Pylon SDK is optional but required for camera support. Download and install it from the [Basler website](https://www.baslerweb.com/en/products/software/).
+
+### Configure and Build
+
+Use the provided CMake presets:
+
+```bash
+cmake --preset linux-debug
+cmake --build --preset linux-debug
+```
+
+Replace `linux-debug` with `linux-release` for an optimized build.

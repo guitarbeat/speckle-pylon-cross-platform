@@ -1,10 +1,11 @@
 {
   "version": 3,
-  "cmakeMinimumRequired": {"major": 3, "minor": 22, "patch": 0},
+  "cmakeMinimumRequired": {"major": 3, "minor": 16, "patch": 0},
   "configurePresets": [
     {
       "name": "linux-debug",
       "displayName": "Linux Debug",
+      "description": "Debug build using Ninja and system compilers",
       "generator": "Ninja",
       "binaryDir": "${sourceDir}/build/linux-debug",
       "cacheVariables": {
@@ -16,6 +17,7 @@
     {
       "name": "linux-release",
       "displayName": "Linux Release",
+      "description": "Release build using Ninja and system compilers",
       "inherits": "linux-debug",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Release"
@@ -24,6 +26,7 @@
     {
       "name": "linux-pylon",
       "displayName": "Linux Pylon Debug",
+      "description": "Debug build with Basler Pylon camera support",
       "inherits": "linux-debug",
       "cacheVariables": {
         "SPECKLE_USE_PYLON": "ON"
