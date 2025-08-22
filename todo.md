@@ -16,7 +16,6 @@
 - [ ] Optimize naive `convolve`, `blur`, and resize or move to OpenCV equivalents
 - [ ] Add unit/perf tests for speckle computation paths (8-bit, 16-bit, temporal)
 - [ ] CI workflow (Linux) to build and run basic tests
-- [ ] Document Linux dependencies and add CMake presets
 - [ ] Optional Windows build with Qt6/OpenCV via vcpkg
 - [ ] UI: Replace About dialog CImg version with shim label or remove
 - [ ] UI: Add option to toggle OpenCV/Qt backends if both are present
@@ -29,3 +28,4 @@
 ## Done
 - [x] Add `TASKS.md`
 - [x] Add `LESSONS_LEARNED.md`
+- [x] Document Linux dependencies and add CMake presets
