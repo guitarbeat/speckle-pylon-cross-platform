@@ -12,17 +12,25 @@
         "CMAKE_BUILD_TYPE": "Debug",
         "SPECKLE_USE_PYLON": "OFF",
         "SPECKLE_USE_NIDAQ": "OFF"
+
+        "CMAKE_BUILD_TYPE": "Debug"
+
       }
     },
     {
       "name": "linux-release",
       "displayName": "Linux Release",
       "description": "Release build using Ninja and system compilers",
+
       "inherits": "linux-debug",
+
+      "generator": "Ninja",
+
       "binaryDir": "${sourceDir}/build/release",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Release"
       }
+
     },
     {
       "name": "linux-pylon",
@@ -32,6 +40,7 @@
       "cacheVariables": {
         "SPECKLE_USE_PYLON": "ON"
       }
+
     }
   ],
   "buildPresets": [
@@ -46,6 +55,7 @@
     {
       "name": "linux-pylon",
       "configurePreset": "linux-pylon"
+
     }
   ]
 }
