@@ -30,4 +30,4 @@ Status legend: [x] done, [~] in progress, [ ] todo
 ## Documentation
 - [x] Add TASKS.md
 - [x] Add LESSONS_LEARNED.md
-- [ ] Update README to reflect Qt6/Linux support and migration status
+- [x] Update README to reflect Qt6/Linux support and migration status

@@ -2,16 +2,45 @@
 
 The Speckle Software is a program for performing [laser speckle contrast imaging](https://foil.bme.utexas.edu/research/laser-speckle-contrast-imaging). It provides control over an acquisition camera and processes raw image data into speckle contrast imagery in real-time. The program is written in C++ and designed to run on modern Windows computers using Basler cameras.
 
+An experimental port to Qt6 and OpenCV is underway to enable Linux support. The Windows instructions below remain valid for the original Qt5 build, while the experimental Linux build uses CMake and modern Qt6 packages.
+
 Developed at the University of Texas at Austin in Dr. Andrew Dunn's [_Functional Optical Imaging Laboratory_](https://foil.bme.utexas.edu/) in the Department of Biomedical Engineering.
 
 ## Overview
 
+* [Experimental Linux Build](#experimental-linux-build)
 * [Developing the Speckle Software](#developing-the-speckle-software)
     * [Install Prerequisites](#install-prerequisites)
     * [Optional Installations](#optional-installations)
     * [Setup Qt Project](#setup-qt-project)
     * [Building for Release](#building-for-release)
 * [Using the Speckle Software](#using-the-speckle-software)
+
+## Experimental Linux Build
+
+The cross-platform port uses CMake with Qt6 and OpenCV. These steps have been tested on Debian/Ubuntu-like distributions and remain a work in progress.
+
+### Prerequisites
+
+- Qt 6 development packages (for example: `qt6-base-dev` and `qt6-5compat-dev`)
+- OpenCV 4 development package (`libopencv-dev`)
+- CMake 3.16 or newer and a C++17 compiler
+- Optional: Basler [Pylon SDK](https://www.baslerweb.com/en/products/software/) and NI-DAQmx for camera and DAQ features
+
+### Configure and Build
+
+```bash
+git clone https://github.com/UTFOIL/speckle-pylon-cross-platform.git
+cd speckle-pylon-cross-platform
+cmake -S . -B build
+cmake --build build
+```
+
+The resulting binary `build/speckle` is linked against Qt6 and OpenCV. Feature toggles such as `SPECKLE_USE_PYLON` and `SPECKLE_USE_NIDAQ` can be enabled with `-D` flags when running CMake.
+
+### Migration Status
+
+The Linux port replaces the original CImg dependency with a small compatibility shim and builds against Qt6 and OpenCV. OpenCV usage is currently required, and several Windows-specific paths remain guarded. Follow ongoing progress in [PROGRESS.md](PROGRESS.md).
 
 ## Developing the Speckle Software
 
