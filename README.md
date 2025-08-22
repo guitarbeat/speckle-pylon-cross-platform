@@ -12,6 +12,7 @@ Developed at the University of Texas at Austin in Dr. Andrew Dunn's [_Functional
     * [Setup Qt Project](#setup-qt-project)
     * [Building for Release](#building-for-release)
 * [Using the Speckle Software](#using-the-speckle-software)
+* [Linux Development](#linux-development)
 
 ## Developing the Speckle Software
 
@@ -117,3 +118,29 @@ git push origin --tags
 ## Using the Speckle Software
 
 See the [Speckle Software Documentation](https://utfoil.github.io/speckle-software/) website. Source located on [`docs`](https://github.com/UTFOIL/speckle-software/tree/docs) branch.
+
+## Linux Development
+
+Experimental support for building on Linux is available using CMake with Qt6 and OpenCV.
+
+### Install Dependencies
+
+On Ubuntu 22.04 or similar:
+
+```bash
+sudo apt update
+sudo apt install build-essential cmake ninja-build qt6-base-dev qt6-tools-dev libopencv-dev
+```
+
+Basler's Pylon SDK is optional but required for camera support. Download and install it from the [Basler website](https://www.baslerweb.com/en/products/software/).
+
+### Configure and Build
+
+Use the provided CMake presets:
+
+```bash
+cmake --preset linux-debug
+cmake --build --preset linux-debug
+```
+
+Replace `linux-debug` with `linux-release` for an optimized build.
