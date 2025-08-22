@@ -11,7 +11,7 @@
 - [ ] Add unit/perf tests for SC computation paths (8-bit, 16-bit, temporal)
 
 ## UI/UX
-- [ ] Replace About dialog CImg version with shim label or remove
+  - [x] Replace About dialog CImg version with shim label or remove
 - [ ] Add option to toggle OpenCV/Qt backends if both are present
 
 ## Camera and video

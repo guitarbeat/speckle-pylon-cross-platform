@@ -20,7 +20,7 @@ Status legend: [x] done, [~] in progress, [ ] todo
 - [ ] Optional: Windows build with Qt6 and OpenCV via vcpkg
 
 ## UI/UX
-- [ ] Replace About dialog CImg version with shim label or remove
+- [x] Replace About dialog CImg version with shim label or remove
 - [ ] Add option to toggle OpenCV/Qt backends if both are present
 
 ## Camera and video

@@ -14,7 +14,6 @@
 - [ ] Optimize naive `convolve`, `blur`, and resize or move to OpenCV equivalents
 - [ ] Add unit/perf tests for speckle computation paths (8-bit, 16-bit, temporal)
 - [ ] Optional Windows build with Qt6/OpenCV via vcpkg
-- [ ] UI: Replace About dialog CImg version with shim label or remove
 - [ ] UI: Add option to toggle OpenCV/Qt backends if both are present
 - [ ] Camera: Verify USB/video-in with OpenCV capture devices (exposure, FPS)
 - [ ] Implement unconnected menu actions in `src/specklewindow.cpp` (export/import, ROI masks, etc.)
@@ -28,3 +27,4 @@
 - [x] Add `LESSONS_LEARNED.md`
 - [x] Add CMake option `SPECKLE_USE_PYLON` and guard Pylon includes/usages; add `find_package(Pylon)` on Linux if available
 - [x] CI workflow (Linux) to build and run basic tests
+- [x] UI: Replace About dialog CImg version with shim label or remove
