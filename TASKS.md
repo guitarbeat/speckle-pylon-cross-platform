@@ -15,7 +15,7 @@ Status legend: [x] done, [~] in progress, [ ] todo
 - [ ] Add unit/perf tests for SC computation paths (8-bit, 16-bit, temporal)
 
 ## Build, packaging, CI
-- [ ] Add CI workflow (Linux) to build and run basic tests
+- [x] Add CI workflow (Linux) to build and run basic tests
 - [x] Document Linux dependencies and CMake presets
 - [ ] Optional: Windows build with Qt6 and OpenCV via vcpkg
 

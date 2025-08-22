@@ -9,7 +9,8 @@
       "binaryDir": "${sourceDir}/build/linux-debug",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Debug",
-        "SPECKLE_USE_PYLON": "OFF"
+        "SPECKLE_USE_PYLON": "OFF",
+        "SPECKLE_USE_NIDAQ": "OFF"
       }
     },
     {
@@ -18,6 +19,14 @@
       "inherits": "linux-debug",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Release"
+      }
+    },
+    {
+      "name": "linux-pylon",
+      "displayName": "Linux Pylon Debug",
+      "inherits": "linux-debug",
+      "cacheVariables": {
+        "SPECKLE_USE_PYLON": "ON"
       }
     }
   ],
@@ -29,6 +38,10 @@
     {
       "name": "linux-release",
       "configurePreset": "linux-release"
+    },
+    {
+      "name": "linux-pylon",
+      "configurePreset": "linux-pylon"
     }
   ]
 }
