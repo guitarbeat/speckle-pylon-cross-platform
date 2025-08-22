@@ -1,5 +1,7 @@
 #include "pylonacquireasync.h"
 #include <QDebug>
+#include <vector>
+#include <cstring>
 
 /**************************************************************/
 PylonAcquireAsync::PylonAcquireAsync(AcquisitionClass *acquisition)
@@ -37,8 +39,6 @@ void PylonAcquireAsync::initialize(Camera_t *camera, unsigned char **buf,
 /**************************************************************/
 void PylonAcquireAsync::run()
 {
-    CImg<unsigned char> tmp_image;
-
     pylonCamera->StartGrabbing();
 
     acquisition->startTimer();
@@ -57,10 +57,15 @@ void PylonAcquireAsync::run()
 
             if(color_planes>1)
             {
-                // re-order pixels in CImg format (not interleaved)
-                tmp_image.assign(buffers[*img_acquired % MAX_NUMBER_IMG_BUFFERS],3, width, height, 1);
-                tmp_image.permute_axes("yzcx");
-                memcpy((void *)(buffers[*img_acquired % MAX_NUMBER_IMG_BUFFERS]), tmp_image.data(), width*height*color_planes);
+                unsigned char *dst = buffers[*img_acquired % MAX_NUMBER_IMG_BUFFERS];
+                const size_t plane_size = static_cast<size_t>(width) * height;
+                std::vector<unsigned char> tmp(dst, dst + plane_size * color_planes);
+                for (size_t i = 0; i < plane_size; ++i)
+                {
+                    dst[i] = tmp[i * 3];
+                    dst[plane_size + i] = tmp[i * 3 + 1];
+                    dst[2 * plane_size + i] = tmp[i * 3 + 2];
+                }
             }
 
             (*img_acquired)++;

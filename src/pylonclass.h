@@ -32,9 +32,6 @@ typedef Pylon::CBaslerUniversalInstantCamera Camera_t;
 using namespace Basler_UniversalCameraParams;
 #endif
 
-#include "CImg.h"
-using namespace cimg_library;
-
 #include "speckle_defines.h"
 
 #define NUM_GRAB_BUFFERS 100

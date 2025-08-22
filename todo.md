@@ -3,7 +3,7 @@
 ## Today
 - [ ] Get Linux build green with Qt6/OpenCV: install deps, configure CMake, run build; capture compiler errors
 - [ ] Add CMake option `SPECKLE_USE_PYLON` and guard Pylon includes/usages; add `find_package(Pylon)` on Linux if available
-- [ ] Remove `CImg` usage from `src/pylonacquireasync.*` and `src/pylonclass.*`: use direct buffers or `cv::Mat`; ensure pixel ordering is correct
+- [x] Remove `CImg` usage from `src/pylonacquireasync.*` and `src/pylonclass.*`: use direct buffers or `cv::Mat`; ensure pixel ordering is correct
 - [ ] Update `README.md` with Linux instructions and current migration status
 
 ## In Progress

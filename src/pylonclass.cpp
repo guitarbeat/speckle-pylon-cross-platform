@@ -5,6 +5,8 @@
 //using namespace std;
 #include "pylonclass.h"
 //#include "camera.h"
+#include <vector>
+#include <cstring>
 
 PylonClass::PylonClass(int devNumber)
 {
@@ -341,7 +343,6 @@ bool PylonClass::isOpened(void)
 /***************************************************************************/
 void PylonClass::acquireImages(int Nframes, unsigned char **image_buffers)
 {
-    CImg<unsigned char> tmp_image;
     // acquired Nframes into image_buffers.
     // this call is blocking
     if(!(pylonCamera.IsGrabbing()))
@@ -358,10 +359,15 @@ void PylonClass::acquireImages(int Nframes, unsigned char **image_buffers)
             memcpy((void *)(image_buffers[i]), pImageBuffer, im_w*im_h*color_planes);
             if(ptrGrabResult->GetPixelType() == Pylon::PixelType_RGB8packed)
             {
-                // re-order pixels in CImg format (not interleaved)
-                tmp_image.assign(image_buffers[i],3, im_w, im_h, 1);
-                tmp_image.permute_axes("yzcx");
-                memcpy((void *)(image_buffers[i]), tmp_image.data(), im_w*im_h*color_planes);
+                unsigned char *dst = image_buffers[i];
+                const size_t plane_size = static_cast<size_t>(im_w) * im_h;
+                std::vector<unsigned char> tmp(dst, dst + plane_size * color_planes);
+                for (size_t j = 0; j < plane_size; ++j)
+                {
+                    dst[j] = tmp[j * 3];
+                    dst[plane_size + j] = tmp[j * 3 + 1];
+                    dst[2 * plane_size + j] = tmp[j * 3 + 2];
+                }
             }
         }
         img_acquired++;
