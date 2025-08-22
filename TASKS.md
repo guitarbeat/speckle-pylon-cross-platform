@@ -16,7 +16,7 @@ Status legend: [x] done, [~] in progress, [ ] todo
 
 ## Build, packaging, CI
 - [ ] Add CI workflow (Linux) to build and run basic tests
-- [ ] Document Linux dependencies and CMake presets
+- [x] Document Linux dependencies and CMake presets
 - [ ] Optional: Windows build with Qt6 and OpenCV via vcpkg
 
 ## UI/UX

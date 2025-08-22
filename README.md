@@ -32,11 +32,11 @@ The cross-platform port uses CMake with Qt6 and OpenCV. These steps have been te
 ```bash
 git clone https://github.com/UTFOIL/speckle-pylon-cross-platform.git
 cd speckle-pylon-cross-platform
-cmake -S . -B build
-cmake --build build
+cmake --preset linux-debug
+cmake --build --preset linux-debug
 ```
 
-The resulting binary `build/speckle` is linked against Qt6 and OpenCV. Feature toggles such as `SPECKLE_USE_PYLON` and `SPECKLE_USE_NIDAQ` can be enabled with `-D` flags when running CMake.
+The resulting binary `build/linux-debug/speckle` is linked against Qt6 and OpenCV. The `CMakePresets.json` file also defines a `linux-release` preset for optimized builds. Feature toggles such as `SPECKLE_USE_PYLON` and `SPECKLE_USE_NIDAQ` can be enabled with `-D` flags when invoking `cmake --preset`.
 
 ### Migration Status
 
