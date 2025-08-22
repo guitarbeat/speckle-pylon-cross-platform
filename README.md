@@ -4,6 +4,29 @@ The Speckle Software is a program for performing [laser speckle contrast imaging
 
 Developed at the University of Texas at Austin in Dr. Andrew Dunn's [_Functional Optical Imaging Laboratory_](https://foil.bme.utexas.edu/) in the Department of Biomedical Engineering.
 
+## Linux / Qt6 / OpenCV Port (experimental)
+
+The project is being ported to Qt6 and OpenCV to enable cross‑platform builds. A
+basic Linux configuration works, but feature parity with the legacy Windows
+version is still in progress. See [`PROGRESS.md`](PROGRESS.md) for up‑to‑date
+status.
+
+### Linux dependencies (Debian/Ubuntu)
+
+```
+sudo apt install build-essential cmake qt6-base-dev qt6-base-dev-tools \
+     qt6-5compat-dev libopencv-dev
+# Optional: Basler Pylon SDK for camera support
+```
+
+### Build
+
+```
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+cmake --build build -j$(nproc)
+./build/speckle
+```
+
 ## Overview
 
 * [Developing the Speckle Software](#developing-the-speckle-software)

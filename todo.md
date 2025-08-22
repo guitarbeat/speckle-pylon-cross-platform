@@ -4,7 +4,7 @@
 - [ ] Get Linux build green with Qt6/OpenCV: install deps, configure CMake, run build; capture compiler errors
 - [ ] Add CMake option `SPECKLE_USE_PYLON` and guard Pylon includes/usages; add `find_package(Pylon)` on Linux if available
 - [ ] Remove `CImg` usage from `src/pylonacquireasync.*` and `src/pylonclass.*`: use direct buffers or `cv::Mat`; ensure pixel ordering is correct
-- [ ] Update `README.md` with Linux instructions and current migration status
+- [x] Update `README.md` with Linux instructions and current migration status
 
 ## In Progress
 - [~] CImg → Qt6/OpenCV migration: build against Qt6/OpenCV on Linux
@@ -23,7 +23,7 @@
 - [ ] Implement unconnected menu actions in `src/specklewindow.cpp` (export/import, ROI masks, etc.)
 - [ ] CMake: Feature toggles for NI-DAQ, LightCrafter, FrameGrabber; guard platform-specific code
 - [ ] Packaging: Produce Linux artifact (AppImage/DEB) and document runtime deps
-- [ ] Update `README.md` to reflect Qt6/Linux support and migration status
+- [x] Update `README.md` to reflect Qt6/Linux support and migration status
 
 ## Done
 - [x] Add `TASKS.md`
