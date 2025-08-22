@@ -2,6 +2,8 @@
 
 The Speckle Software is a program for performing [laser speckle contrast imaging](https://foil.bme.utexas.edu/research/laser-speckle-contrast-imaging). It provides control over an acquisition camera and processes raw image data into speckle contrast imagery in real-time. The program is written in C++ and designed to run on modern Windows computers using Basler cameras.
 
+An experimental port to Qt6 and OpenCV is underway to enable Linux support. The Windows instructions below remain valid for the original Qt5 build, while the experimental Linux build uses CMake and modern Qt6 packages.
+
 Developed at the University of Texas at Austin in Dr. Andrew Dunn's [_Functional Optical Imaging Laboratory_](https://foil.bme.utexas.edu/) in the Department of Biomedical Engineering.
 
 ## Linux / Qt6 / OpenCV Port (experimental)

@@ -15,12 +15,12 @@ Status legend: [x] done, [~] in progress, [ ] todo
 - [ ] Add unit/perf tests for SC computation paths (8-bit, 16-bit, temporal)
 
 ## Build, packaging, CI
-- [ ] Add CI workflow (Linux) to build and run basic tests
-- [ ] Document Linux dependencies and CMake presets
+- [x] Add CI workflow (Linux) to build and run basic tests
+- [x] Document Linux dependencies and CMake presets
 - [ ] Optional: Windows build with Qt6 and OpenCV via vcpkg
 
 ## UI/UX
-- [ ] Replace About dialog CImg version with shim label or remove
+- [x] Replace About dialog CImg version with shim label or remove
 - [ ] Add option to toggle OpenCV/Qt backends if both are present
 
 ## Camera and video

@@ -1097,7 +1097,6 @@ void SpeckleWindow::showAboutDialog(void) {
                                      QString("<p>Build %1.%2.%3").arg(3).arg(1).arg(1) +
                   QString(" (%1)</p>").arg(QDate::currentDate().toString(Qt::ISODate)) +
                   QString("<p>Qt v%1</p>").arg(QT_VERSION_STR) +
-                  QString("<p>CImg v%1</p>").arg(cimg_version) +
 #ifdef SPECKLE_USE_OPENCV
                   QString("<p>OpenCV %1</p>").arg(CV_VERSION) +
 #endif
