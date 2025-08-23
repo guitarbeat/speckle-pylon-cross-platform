@@ -12,7 +12,7 @@
 
 # =============================================================================
 # Project: speckle
-# Configurations: RelWithDebInfo
+# Configurations: Release
 # =============================================================================
 
 #############################################
@@ -24,7 +24,7 @@ ninja_required_version = 1.5
 #############################################
 # Set configuration variable for custom commands.
 
-CONFIGURATION = RelWithDebInfo
+CONFIGURATION = Release
 # =============================================================================
 # Include auxiliary files.
 
@@ -49,202 +49,202 @@ cmake_ninja_workdir = /workspace/build/linux/
 
 build cmake_object_order_depends_target_speckle: phony || speckle_autogen speckle_autogen/UVLADIE3JM/qrc_icons.cpp speckle_autogen/mocs_compilation.cpp speckle_autogen/timestamp speckle_autogen_timestamp_deps
 
-build CMakeFiles/speckle.dir/speckle_autogen/mocs_compilation.cpp.o: CXX_COMPILER__speckle_unscanned_RelWithDebInfo /workspace/build/linux/speckle_autogen/mocs_compilation.cpp || cmake_object_order_depends_target_speckle
+build CMakeFiles/speckle.dir/speckle_autogen/mocs_compilation.cpp.o: CXX_COMPILER__speckle_unscanned_Release /workspace/build/linux/speckle_autogen/mocs_compilation.cpp || cmake_object_order_depends_target_speckle
   DEFINES = -DQT_CHARTS_LIB -DQT_CORE5COMPAT_LIB -DQT_CORE_LIB -DQT_DEPRECATED_WARNINGS_SINCE=0x060000 -DQT_DISABLE_DEPRECATED_BEFORE=0x060000 -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_WIDGETS_LIB -DSPECKLE_USE_OPENCV
   DEP_FILE = CMakeFiles/speckle.dir/speckle_autogen/mocs_compilation.cpp.o.d
-  FLAGS = -fPIC -O2 -g -DNDEBUG -std=gnu++17
+  FLAGS = -fPIC -O3 -DNDEBUG -std=gnu++17
   INCLUDES = -I/workspace/build/linux/speckle_autogen/include -I/workspace/src -isystem /usr/include/opencv4 -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore -isystem /usr/include/x86_64-linux-gnu/qt6 -isystem /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -isystem /usr/include/x86_64-linux-gnu/qt6/QtGui -isystem /usr/include/x86_64-linux-gnu/qt6/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt6/QtCharts -isystem /usr/include/x86_64-linux-gnu/qt6/QtOpenGL -isystem /usr/include/x86_64-linux-gnu/qt6/QtOpenGLWidgets -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore5Compat
   OBJECT_DIR = CMakeFiles/speckle.dir
   OBJECT_FILE_DIR = CMakeFiles/speckle.dir/speckle_autogen
 
-build CMakeFiles/speckle.dir/src/main.cpp.o: CXX_COMPILER__speckle_unscanned_RelWithDebInfo /workspace/src/main.cpp || cmake_object_order_depends_target_speckle
+build CMakeFiles/speckle.dir/src/main.cpp.o: CXX_COMPILER__speckle_unscanned_Release /workspace/src/main.cpp || cmake_object_order_depends_target_speckle
   DEFINES = -DQT_CHARTS_LIB -DQT_CORE5COMPAT_LIB -DQT_CORE_LIB -DQT_DEPRECATED_WARNINGS_SINCE=0x060000 -DQT_DISABLE_DEPRECATED_BEFORE=0x060000 -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_WIDGETS_LIB -DSPECKLE_USE_OPENCV
   DEP_FILE = CMakeFiles/speckle.dir/src/main.cpp.o.d
-  FLAGS = -fPIC -O2 -g -DNDEBUG -std=gnu++17
+  FLAGS = -fPIC -O3 -DNDEBUG -std=gnu++17
   INCLUDES = -I/workspace/build/linux/speckle_autogen/include -I/workspace/src -isystem /usr/include/opencv4 -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore -isystem /usr/include/x86_64-linux-gnu/qt6 -isystem /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -isystem /usr/include/x86_64-linux-gnu/qt6/QtGui -isystem /usr/include/x86_64-linux-gnu/qt6/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt6/QtCharts -isystem /usr/include/x86_64-linux-gnu/qt6/QtOpenGL -isystem /usr/include/x86_64-linux-gnu/qt6/QtOpenGLWidgets -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore5Compat
   OBJECT_DIR = CMakeFiles/speckle.dir
   OBJECT_FILE_DIR = CMakeFiles/speckle.dir/src
 
-build CMakeFiles/speckle.dir/src/specklewindow.cpp.o: CXX_COMPILER__speckle_unscanned_RelWithDebInfo /workspace/src/specklewindow.cpp || cmake_object_order_depends_target_speckle
+build CMakeFiles/speckle.dir/src/specklewindow.cpp.o: CXX_COMPILER__speckle_unscanned_Release /workspace/src/specklewindow.cpp || cmake_object_order_depends_target_speckle
   DEFINES = -DQT_CHARTS_LIB -DQT_CORE5COMPAT_LIB -DQT_CORE_LIB -DQT_DEPRECATED_WARNINGS_SINCE=0x060000 -DQT_DISABLE_DEPRECATED_BEFORE=0x060000 -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_WIDGETS_LIB -DSPECKLE_USE_OPENCV
   DEP_FILE = CMakeFiles/speckle.dir/src/specklewindow.cpp.o.d
-  FLAGS = -fPIC -O2 -g -DNDEBUG -std=gnu++17
+  FLAGS = -fPIC -O3 -DNDEBUG -std=gnu++17
   INCLUDES = -I/workspace/build/linux/speckle_autogen/include -I/workspace/src -isystem /usr/include/opencv4 -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore -isystem /usr/include/x86_64-linux-gnu/qt6 -isystem /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -isystem /usr/include/x86_64-linux-gnu/qt6/QtGui -isystem /usr/include/x86_64-linux-gnu/qt6/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt6/QtCharts -isystem /usr/include/x86_64-linux-gnu/qt6/QtOpenGL -isystem /usr/include/x86_64-linux-gnu/qt6/QtOpenGLWidgets -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore5Compat
   OBJECT_DIR = CMakeFiles/speckle.dir
   OBJECT_FILE_DIR = CMakeFiles/speckle.dir/src
 
-build CMakeFiles/speckle.dir/src/camera.cpp.o: CXX_COMPILER__speckle_unscanned_RelWithDebInfo /workspace/src/camera.cpp || cmake_object_order_depends_target_speckle
+build CMakeFiles/speckle.dir/src/camera.cpp.o: CXX_COMPILER__speckle_unscanned_Release /workspace/src/camera.cpp || cmake_object_order_depends_target_speckle
   DEFINES = -DQT_CHARTS_LIB -DQT_CORE5COMPAT_LIB -DQT_CORE_LIB -DQT_DEPRECATED_WARNINGS_SINCE=0x060000 -DQT_DISABLE_DEPRECATED_BEFORE=0x060000 -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_WIDGETS_LIB -DSPECKLE_USE_OPENCV
   DEP_FILE = CMakeFiles/speckle.dir/src/camera.cpp.o.d
-  FLAGS = -fPIC -O2 -g -DNDEBUG -std=gnu++17
+  FLAGS = -fPIC -O3 -DNDEBUG -std=gnu++17
   INCLUDES = -I/workspace/build/linux/speckle_autogen/include -I/workspace/src -isystem /usr/include/opencv4 -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore -isystem /usr/include/x86_64-linux-gnu/qt6 -isystem /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -isystem /usr/include/x86_64-linux-gnu/qt6/QtGui -isystem /usr/include/x86_64-linux-gnu/qt6/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt6/QtCharts -isystem /usr/include/x86_64-linux-gnu/qt6/QtOpenGL -isystem /usr/include/x86_64-linux-gnu/qt6/QtOpenGLWidgets -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore5Compat
   OBJECT_DIR = CMakeFiles/speckle.dir
   OBJECT_FILE_DIR = CMakeFiles/speckle.dir/src
 
-build CMakeFiles/speckle.dir/src/speckle.cpp.o: CXX_COMPILER__speckle_unscanned_RelWithDebInfo /workspace/src/speckle.cpp || cmake_object_order_depends_target_speckle
+build CMakeFiles/speckle.dir/src/speckle.cpp.o: CXX_COMPILER__speckle_unscanned_Release /workspace/src/speckle.cpp || cmake_object_order_depends_target_speckle
   DEFINES = -DQT_CHARTS_LIB -DQT_CORE5COMPAT_LIB -DQT_CORE_LIB -DQT_DEPRECATED_WARNINGS_SINCE=0x060000 -DQT_DISABLE_DEPRECATED_BEFORE=0x060000 -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_WIDGETS_LIB -DSPECKLE_USE_OPENCV
   DEP_FILE = CMakeFiles/speckle.dir/src/speckle.cpp.o.d
-  FLAGS = -fPIC -O2 -g -DNDEBUG -std=gnu++17
+  FLAGS = -fPIC -O3 -DNDEBUG -std=gnu++17
   INCLUDES = -I/workspace/build/linux/speckle_autogen/include -I/workspace/src -isystem /usr/include/opencv4 -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore -isystem /usr/include/x86_64-linux-gnu/qt6 -isystem /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -isystem /usr/include/x86_64-linux-gnu/qt6/QtGui -isystem /usr/include/x86_64-linux-gnu/qt6/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt6/QtCharts -isystem /usr/include/x86_64-linux-gnu/qt6/QtOpenGL -isystem /usr/include/x86_64-linux-gnu/qt6/QtOpenGLWidgets -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore5Compat
   OBJECT_DIR = CMakeFiles/speckle.dir
   OBJECT_FILE_DIR = CMakeFiles/speckle.dir/src
 
-build CMakeFiles/speckle.dir/src/SpeckleROIClass.cpp.o: CXX_COMPILER__speckle_unscanned_RelWithDebInfo /workspace/src/SpeckleROIClass.cpp || cmake_object_order_depends_target_speckle
+build CMakeFiles/speckle.dir/src/SpeckleROIClass.cpp.o: CXX_COMPILER__speckle_unscanned_Release /workspace/src/SpeckleROIClass.cpp || cmake_object_order_depends_target_speckle
   DEFINES = -DQT_CHARTS_LIB -DQT_CORE5COMPAT_LIB -DQT_CORE_LIB -DQT_DEPRECATED_WARNINGS_SINCE=0x060000 -DQT_DISABLE_DEPRECATED_BEFORE=0x060000 -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_WIDGETS_LIB -DSPECKLE_USE_OPENCV
   DEP_FILE = CMakeFiles/speckle.dir/src/SpeckleROIClass.cpp.o.d
-  FLAGS = -fPIC -O2 -g -DNDEBUG -std=gnu++17
+  FLAGS = -fPIC -O3 -DNDEBUG -std=gnu++17
   INCLUDES = -I/workspace/build/linux/speckle_autogen/include -I/workspace/src -isystem /usr/include/opencv4 -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore -isystem /usr/include/x86_64-linux-gnu/qt6 -isystem /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -isystem /usr/include/x86_64-linux-gnu/qt6/QtGui -isystem /usr/include/x86_64-linux-gnu/qt6/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt6/QtCharts -isystem /usr/include/x86_64-linux-gnu/qt6/QtOpenGL -isystem /usr/include/x86_64-linux-gnu/qt6/QtOpenGLWidgets -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore5Compat
   OBJECT_DIR = CMakeFiles/speckle.dir
   OBJECT_FILE_DIR = CMakeFiles/speckle.dir/src
 
-build CMakeFiles/speckle.dir/src/SpeckleOverlayClass.cpp.o: CXX_COMPILER__speckle_unscanned_RelWithDebInfo /workspace/src/SpeckleOverlayClass.cpp || cmake_object_order_depends_target_speckle
+build CMakeFiles/speckle.dir/src/SpeckleOverlayClass.cpp.o: CXX_COMPILER__speckle_unscanned_Release /workspace/src/SpeckleOverlayClass.cpp || cmake_object_order_depends_target_speckle
   DEFINES = -DQT_CHARTS_LIB -DQT_CORE5COMPAT_LIB -DQT_CORE_LIB -DQT_DEPRECATED_WARNINGS_SINCE=0x060000 -DQT_DISABLE_DEPRECATED_BEFORE=0x060000 -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_WIDGETS_LIB -DSPECKLE_USE_OPENCV
   DEP_FILE = CMakeFiles/speckle.dir/src/SpeckleOverlayClass.cpp.o.d
-  FLAGS = -fPIC -O2 -g -DNDEBUG -std=gnu++17
+  FLAGS = -fPIC -O3 -DNDEBUG -std=gnu++17
   INCLUDES = -I/workspace/build/linux/speckle_autogen/include -I/workspace/src -isystem /usr/include/opencv4 -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore -isystem /usr/include/x86_64-linux-gnu/qt6 -isystem /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -isystem /usr/include/x86_64-linux-gnu/qt6/QtGui -isystem /usr/include/x86_64-linux-gnu/qt6/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt6/QtCharts -isystem /usr/include/x86_64-linux-gnu/qt6/QtOpenGL -isystem /usr/include/x86_64-linux-gnu/qt6/QtOpenGLWidgets -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore5Compat
   OBJECT_DIR = CMakeFiles/speckle.dir
   OBJECT_FILE_DIR = CMakeFiles/speckle.dir/src
 
-build CMakeFiles/speckle.dir/src/speckle_processing.cpp.o: CXX_COMPILER__speckle_unscanned_RelWithDebInfo /workspace/src/speckle_processing.cpp || cmake_object_order_depends_target_speckle
+build CMakeFiles/speckle.dir/src/speckle_processing.cpp.o: CXX_COMPILER__speckle_unscanned_Release /workspace/src/speckle_processing.cpp || cmake_object_order_depends_target_speckle
   DEFINES = -DQT_CHARTS_LIB -DQT_CORE5COMPAT_LIB -DQT_CORE_LIB -DQT_DEPRECATED_WARNINGS_SINCE=0x060000 -DQT_DISABLE_DEPRECATED_BEFORE=0x060000 -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_WIDGETS_LIB -DSPECKLE_USE_OPENCV
   DEP_FILE = CMakeFiles/speckle.dir/src/speckle_processing.cpp.o.d
-  FLAGS = -fPIC -O2 -g -DNDEBUG -std=gnu++17
+  FLAGS = -fPIC -O3 -DNDEBUG -std=gnu++17
   INCLUDES = -I/workspace/build/linux/speckle_autogen/include -I/workspace/src -isystem /usr/include/opencv4 -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore -isystem /usr/include/x86_64-linux-gnu/qt6 -isystem /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -isystem /usr/include/x86_64-linux-gnu/qt6/QtGui -isystem /usr/include/x86_64-linux-gnu/qt6/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt6/QtCharts -isystem /usr/include/x86_64-linux-gnu/qt6/QtOpenGL -isystem /usr/include/x86_64-linux-gnu/qt6/QtOpenGLWidgets -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore5Compat
   OBJECT_DIR = CMakeFiles/speckle.dir
   OBJECT_FILE_DIR = CMakeFiles/speckle.dir/src
 
-build CMakeFiles/speckle.dir/src/speckledisplay.cpp.o: CXX_COMPILER__speckle_unscanned_RelWithDebInfo /workspace/src/speckledisplay.cpp || cmake_object_order_depends_target_speckle
+build CMakeFiles/speckle.dir/src/speckledisplay.cpp.o: CXX_COMPILER__speckle_unscanned_Release /workspace/src/speckledisplay.cpp || cmake_object_order_depends_target_speckle
   DEFINES = -DQT_CHARTS_LIB -DQT_CORE5COMPAT_LIB -DQT_CORE_LIB -DQT_DEPRECATED_WARNINGS_SINCE=0x060000 -DQT_DISABLE_DEPRECATED_BEFORE=0x060000 -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_WIDGETS_LIB -DSPECKLE_USE_OPENCV
   DEP_FILE = CMakeFiles/speckle.dir/src/speckledisplay.cpp.o.d
-  FLAGS = -fPIC -O2 -g -DNDEBUG -std=gnu++17
+  FLAGS = -fPIC -O3 -DNDEBUG -std=gnu++17
   INCLUDES = -I/workspace/build/linux/speckle_autogen/include -I/workspace/src -isystem /usr/include/opencv4 -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore -isystem /usr/include/x86_64-linux-gnu/qt6 -isystem /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -isystem /usr/include/x86_64-linux-gnu/qt6/QtGui -isystem /usr/include/x86_64-linux-gnu/qt6/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt6/QtCharts -isystem /usr/include/x86_64-linux-gnu/qt6/QtOpenGL -isystem /usr/include/x86_64-linux-gnu/qt6/QtOpenGLWidgets -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore5Compat
   OBJECT_DIR = CMakeFiles/speckle.dir
   OBJECT_FILE_DIR = CMakeFiles/speckle.dir/src
 
-build CMakeFiles/speckle.dir/src/ProcessingThread.cpp.o: CXX_COMPILER__speckle_unscanned_RelWithDebInfo /workspace/src/ProcessingThread.cpp || cmake_object_order_depends_target_speckle
+build CMakeFiles/speckle.dir/src/ProcessingThread.cpp.o: CXX_COMPILER__speckle_unscanned_Release /workspace/src/ProcessingThread.cpp || cmake_object_order_depends_target_speckle
   DEFINES = -DQT_CHARTS_LIB -DQT_CORE5COMPAT_LIB -DQT_CORE_LIB -DQT_DEPRECATED_WARNINGS_SINCE=0x060000 -DQT_DISABLE_DEPRECATED_BEFORE=0x060000 -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_WIDGETS_LIB -DSPECKLE_USE_OPENCV
   DEP_FILE = CMakeFiles/speckle.dir/src/ProcessingThread.cpp.o.d
-  FLAGS = -fPIC -O2 -g -DNDEBUG -std=gnu++17
+  FLAGS = -fPIC -O3 -DNDEBUG -std=gnu++17
   INCLUDES = -I/workspace/build/linux/speckle_autogen/include -I/workspace/src -isystem /usr/include/opencv4 -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore -isystem /usr/include/x86_64-linux-gnu/qt6 -isystem /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -isystem /usr/include/x86_64-linux-gnu/qt6/QtGui -isystem /usr/include/x86_64-linux-gnu/qt6/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt6/QtCharts -isystem /usr/include/x86_64-linux-gnu/qt6/QtOpenGL -isystem /usr/include/x86_64-linux-gnu/qt6/QtOpenGLWidgets -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore5Compat
   OBJECT_DIR = CMakeFiles/speckle.dir
   OBJECT_FILE_DIR = CMakeFiles/speckle.dir/src
 
-build CMakeFiles/speckle.dir/src/WriteThread.cpp.o: CXX_COMPILER__speckle_unscanned_RelWithDebInfo /workspace/src/WriteThread.cpp || cmake_object_order_depends_target_speckle
+build CMakeFiles/speckle.dir/src/WriteThread.cpp.o: CXX_COMPILER__speckle_unscanned_Release /workspace/src/WriteThread.cpp || cmake_object_order_depends_target_speckle
   DEFINES = -DQT_CHARTS_LIB -DQT_CORE5COMPAT_LIB -DQT_CORE_LIB -DQT_DEPRECATED_WARNINGS_SINCE=0x060000 -DQT_DISABLE_DEPRECATED_BEFORE=0x060000 -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_WIDGETS_LIB -DSPECKLE_USE_OPENCV
   DEP_FILE = CMakeFiles/speckle.dir/src/WriteThread.cpp.o.d
-  FLAGS = -fPIC -O2 -g -DNDEBUG -std=gnu++17
+  FLAGS = -fPIC -O3 -DNDEBUG -std=gnu++17
   INCLUDES = -I/workspace/build/linux/speckle_autogen/include -I/workspace/src -isystem /usr/include/opencv4 -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore -isystem /usr/include/x86_64-linux-gnu/qt6 -isystem /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -isystem /usr/include/x86_64-linux-gnu/qt6/QtGui -isystem /usr/include/x86_64-linux-gnu/qt6/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt6/QtCharts -isystem /usr/include/x86_64-linux-gnu/qt6/QtOpenGL -isystem /usr/include/x86_64-linux-gnu/qt6/QtOpenGLWidgets -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore5Compat
   OBJECT_DIR = CMakeFiles/speckle.dir
   OBJECT_FILE_DIR = CMakeFiles/speckle.dir/src
 
-build CMakeFiles/speckle.dir/src/WriteSCThread.cpp.o: CXX_COMPILER__speckle_unscanned_RelWithDebInfo /workspace/src/WriteSCThread.cpp || cmake_object_order_depends_target_speckle
+build CMakeFiles/speckle.dir/src/WriteSCThread.cpp.o: CXX_COMPILER__speckle_unscanned_Release /workspace/src/WriteSCThread.cpp || cmake_object_order_depends_target_speckle
   DEFINES = -DQT_CHARTS_LIB -DQT_CORE5COMPAT_LIB -DQT_CORE_LIB -DQT_DEPRECATED_WARNINGS_SINCE=0x060000 -DQT_DISABLE_DEPRECATED_BEFORE=0x060000 -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_WIDGETS_LIB -DSPECKLE_USE_OPENCV
   DEP_FILE = CMakeFiles/speckle.dir/src/WriteSCThread.cpp.o.d
-  FLAGS = -fPIC -O2 -g -DNDEBUG -std=gnu++17
+  FLAGS = -fPIC -O3 -DNDEBUG -std=gnu++17
   INCLUDES = -I/workspace/build/linux/speckle_autogen/include -I/workspace/src -isystem /usr/include/opencv4 -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore -isystem /usr/include/x86_64-linux-gnu/qt6 -isystem /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -isystem /usr/include/x86_64-linux-gnu/qt6/QtGui -isystem /usr/include/x86_64-linux-gnu/qt6/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt6/QtCharts -isystem /usr/include/x86_64-linux-gnu/qt6/QtOpenGL -isystem /usr/include/x86_64-linux-gnu/qt6/QtOpenGLWidgets -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore5Compat
   OBJECT_DIR = CMakeFiles/speckle.dir
   OBJECT_FILE_DIR = CMakeFiles/speckle.dir/src
 
-build CMakeFiles/speckle.dir/src/HistogramWindow.cpp.o: CXX_COMPILER__speckle_unscanned_RelWithDebInfo /workspace/src/HistogramWindow.cpp || cmake_object_order_depends_target_speckle
+build CMakeFiles/speckle.dir/src/HistogramWindow.cpp.o: CXX_COMPILER__speckle_unscanned_Release /workspace/src/HistogramWindow.cpp || cmake_object_order_depends_target_speckle
   DEFINES = -DQT_CHARTS_LIB -DQT_CORE5COMPAT_LIB -DQT_CORE_LIB -DQT_DEPRECATED_WARNINGS_SINCE=0x060000 -DQT_DISABLE_DEPRECATED_BEFORE=0x060000 -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_WIDGETS_LIB -DSPECKLE_USE_OPENCV
   DEP_FILE = CMakeFiles/speckle.dir/src/HistogramWindow.cpp.o.d
-  FLAGS = -fPIC -O2 -g -DNDEBUG -std=gnu++17
+  FLAGS = -fPIC -O3 -DNDEBUG -std=gnu++17
   INCLUDES = -I/workspace/build/linux/speckle_autogen/include -I/workspace/src -isystem /usr/include/opencv4 -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore -isystem /usr/include/x86_64-linux-gnu/qt6 -isystem /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -isystem /usr/include/x86_64-linux-gnu/qt6/QtGui -isystem /usr/include/x86_64-linux-gnu/qt6/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt6/QtCharts -isystem /usr/include/x86_64-linux-gnu/qt6/QtOpenGL -isystem /usr/include/x86_64-linux-gnu/qt6/QtOpenGLWidgets -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore5Compat
   OBJECT_DIR = CMakeFiles/speckle.dir
   OBJECT_FILE_DIR = CMakeFiles/speckle.dir/src
 
-build CMakeFiles/speckle.dir/src/acquisitionclass.cpp.o: CXX_COMPILER__speckle_unscanned_RelWithDebInfo /workspace/src/acquisitionclass.cpp || cmake_object_order_depends_target_speckle
+build CMakeFiles/speckle.dir/src/acquisitionclass.cpp.o: CXX_COMPILER__speckle_unscanned_Release /workspace/src/acquisitionclass.cpp || cmake_object_order_depends_target_speckle
   DEFINES = -DQT_CHARTS_LIB -DQT_CORE5COMPAT_LIB -DQT_CORE_LIB -DQT_DEPRECATED_WARNINGS_SINCE=0x060000 -DQT_DISABLE_DEPRECATED_BEFORE=0x060000 -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_WIDGETS_LIB -DSPECKLE_USE_OPENCV
   DEP_FILE = CMakeFiles/speckle.dir/src/acquisitionclass.cpp.o.d
-  FLAGS = -fPIC -O2 -g -DNDEBUG -std=gnu++17
+  FLAGS = -fPIC -O3 -DNDEBUG -std=gnu++17
   INCLUDES = -I/workspace/build/linux/speckle_autogen/include -I/workspace/src -isystem /usr/include/opencv4 -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore -isystem /usr/include/x86_64-linux-gnu/qt6 -isystem /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -isystem /usr/include/x86_64-linux-gnu/qt6/QtGui -isystem /usr/include/x86_64-linux-gnu/qt6/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt6/QtCharts -isystem /usr/include/x86_64-linux-gnu/qt6/QtOpenGL -isystem /usr/include/x86_64-linux-gnu/qt6/QtOpenGLWidgets -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore5Compat
   OBJECT_DIR = CMakeFiles/speckle.dir
   OBJECT_FILE_DIR = CMakeFiles/speckle.dir/src
 
-build CMakeFiles/speckle.dir/src/cameradescription.cpp.o: CXX_COMPILER__speckle_unscanned_RelWithDebInfo /workspace/src/cameradescription.cpp || cmake_object_order_depends_target_speckle
+build CMakeFiles/speckle.dir/src/cameradescription.cpp.o: CXX_COMPILER__speckle_unscanned_Release /workspace/src/cameradescription.cpp || cmake_object_order_depends_target_speckle
   DEFINES = -DQT_CHARTS_LIB -DQT_CORE5COMPAT_LIB -DQT_CORE_LIB -DQT_DEPRECATED_WARNINGS_SINCE=0x060000 -DQT_DISABLE_DEPRECATED_BEFORE=0x060000 -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_WIDGETS_LIB -DSPECKLE_USE_OPENCV
   DEP_FILE = CMakeFiles/speckle.dir/src/cameradescription.cpp.o.d
-  FLAGS = -fPIC -O2 -g -DNDEBUG -std=gnu++17
+  FLAGS = -fPIC -O3 -DNDEBUG -std=gnu++17
   INCLUDES = -I/workspace/build/linux/speckle_autogen/include -I/workspace/src -isystem /usr/include/opencv4 -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore -isystem /usr/include/x86_64-linux-gnu/qt6 -isystem /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -isystem /usr/include/x86_64-linux-gnu/qt6/QtGui -isystem /usr/include/x86_64-linux-gnu/qt6/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt6/QtCharts -isystem /usr/include/x86_64-linux-gnu/qt6/QtOpenGL -isystem /usr/include/x86_64-linux-gnu/qt6/QtOpenGLWidgets -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore5Compat
   OBJECT_DIR = CMakeFiles/speckle.dir
   OBJECT_FILE_DIR = CMakeFiles/speckle.dir/src
 
-build CMakeFiles/speckle.dir/src/SpeckleSettings.cpp.o: CXX_COMPILER__speckle_unscanned_RelWithDebInfo /workspace/src/SpeckleSettings.cpp || cmake_object_order_depends_target_speckle
+build CMakeFiles/speckle.dir/src/SpeckleSettings.cpp.o: CXX_COMPILER__speckle_unscanned_Release /workspace/src/SpeckleSettings.cpp || cmake_object_order_depends_target_speckle
   DEFINES = -DQT_CHARTS_LIB -DQT_CORE5COMPAT_LIB -DQT_CORE_LIB -DQT_DEPRECATED_WARNINGS_SINCE=0x060000 -DQT_DISABLE_DEPRECATED_BEFORE=0x060000 -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_WIDGETS_LIB -DSPECKLE_USE_OPENCV
   DEP_FILE = CMakeFiles/speckle.dir/src/SpeckleSettings.cpp.o.d
-  FLAGS = -fPIC -O2 -g -DNDEBUG -std=gnu++17
+  FLAGS = -fPIC -O3 -DNDEBUG -std=gnu++17
   INCLUDES = -I/workspace/build/linux/speckle_autogen/include -I/workspace/src -isystem /usr/include/opencv4 -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore -isystem /usr/include/x86_64-linux-gnu/qt6 -isystem /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -isystem /usr/include/x86_64-linux-gnu/qt6/QtGui -isystem /usr/include/x86_64-linux-gnu/qt6/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt6/QtCharts -isystem /usr/include/x86_64-linux-gnu/qt6/QtOpenGL -isystem /usr/include/x86_64-linux-gnu/qt6/QtOpenGLWidgets -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore5Compat
   OBJECT_DIR = CMakeFiles/speckle.dir
   OBJECT_FILE_DIR = CMakeFiles/speckle.dir/src
 
-build CMakeFiles/speckle.dir/src/liveimagecreator.cpp.o: CXX_COMPILER__speckle_unscanned_RelWithDebInfo /workspace/src/liveimagecreator.cpp || cmake_object_order_depends_target_speckle
+build CMakeFiles/speckle.dir/src/liveimagecreator.cpp.o: CXX_COMPILER__speckle_unscanned_Release /workspace/src/liveimagecreator.cpp || cmake_object_order_depends_target_speckle
   DEFINES = -DQT_CHARTS_LIB -DQT_CORE5COMPAT_LIB -DQT_CORE_LIB -DQT_DEPRECATED_WARNINGS_SINCE=0x060000 -DQT_DISABLE_DEPRECATED_BEFORE=0x060000 -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_WIDGETS_LIB -DSPECKLE_USE_OPENCV
   DEP_FILE = CMakeFiles/speckle.dir/src/liveimagecreator.cpp.o.d
-  FLAGS = -fPIC -O2 -g -DNDEBUG -std=gnu++17
+  FLAGS = -fPIC -O3 -DNDEBUG -std=gnu++17
   INCLUDES = -I/workspace/build/linux/speckle_autogen/include -I/workspace/src -isystem /usr/include/opencv4 -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore -isystem /usr/include/x86_64-linux-gnu/qt6 -isystem /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -isystem /usr/include/x86_64-linux-gnu/qt6/QtGui -isystem /usr/include/x86_64-linux-gnu/qt6/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt6/QtCharts -isystem /usr/include/x86_64-linux-gnu/qt6/QtOpenGL -isystem /usr/include/x86_64-linux-gnu/qt6/QtOpenGLWidgets -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore5Compat
   OBJECT_DIR = CMakeFiles/speckle.dir
   OBJECT_FILE_DIR = CMakeFiles/speckle.dir/src
 
-build CMakeFiles/speckle.dir/src/scimagecreator.cpp.o: CXX_COMPILER__speckle_unscanned_RelWithDebInfo /workspace/src/scimagecreator.cpp || cmake_object_order_depends_target_speckle
+build CMakeFiles/speckle.dir/src/scimagecreator.cpp.o: CXX_COMPILER__speckle_unscanned_Release /workspace/src/scimagecreator.cpp || cmake_object_order_depends_target_speckle
   DEFINES = -DQT_CHARTS_LIB -DQT_CORE5COMPAT_LIB -DQT_CORE_LIB -DQT_DEPRECATED_WARNINGS_SINCE=0x060000 -DQT_DISABLE_DEPRECATED_BEFORE=0x060000 -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_WIDGETS_LIB -DSPECKLE_USE_OPENCV
   DEP_FILE = CMakeFiles/speckle.dir/src/scimagecreator.cpp.o.d
-  FLAGS = -fPIC -O2 -g -DNDEBUG -std=gnu++17
+  FLAGS = -fPIC -O3 -DNDEBUG -std=gnu++17
   INCLUDES = -I/workspace/build/linux/speckle_autogen/include -I/workspace/src -isystem /usr/include/opencv4 -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore -isystem /usr/include/x86_64-linux-gnu/qt6 -isystem /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -isystem /usr/include/x86_64-linux-gnu/qt6/QtGui -isystem /usr/include/x86_64-linux-gnu/qt6/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt6/QtCharts -isystem /usr/include/x86_64-linux-gnu/qt6/QtOpenGL -isystem /usr/include/x86_64-linux-gnu/qt6/QtOpenGLWidgets -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore5Compat
   OBJECT_DIR = CMakeFiles/speckle.dir
   OBJECT_FILE_DIR = CMakeFiles/speckle.dir/src
 
-build CMakeFiles/speckle.dir/src/overlayimagecreator.cpp.o: CXX_COMPILER__speckle_unscanned_RelWithDebInfo /workspace/src/overlayimagecreator.cpp || cmake_object_order_depends_target_speckle
+build CMakeFiles/speckle.dir/src/overlayimagecreator.cpp.o: CXX_COMPILER__speckle_unscanned_Release /workspace/src/overlayimagecreator.cpp || cmake_object_order_depends_target_speckle
   DEFINES = -DQT_CHARTS_LIB -DQT_CORE5COMPAT_LIB -DQT_CORE_LIB -DQT_DEPRECATED_WARNINGS_SINCE=0x060000 -DQT_DISABLE_DEPRECATED_BEFORE=0x060000 -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_WIDGETS_LIB -DSPECKLE_USE_OPENCV
   DEP_FILE = CMakeFiles/speckle.dir/src/overlayimagecreator.cpp.o.d
-  FLAGS = -fPIC -O2 -g -DNDEBUG -std=gnu++17
+  FLAGS = -fPIC -O3 -DNDEBUG -std=gnu++17
   INCLUDES = -I/workspace/build/linux/speckle_autogen/include -I/workspace/src -isystem /usr/include/opencv4 -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore -isystem /usr/include/x86_64-linux-gnu/qt6 -isystem /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -isystem /usr/include/x86_64-linux-gnu/qt6/QtGui -isystem /usr/include/x86_64-linux-gnu/qt6/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt6/QtCharts -isystem /usr/include/x86_64-linux-gnu/qt6/QtOpenGL -isystem /usr/include/x86_64-linux-gnu/qt6/QtOpenGLWidgets -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore5Compat
   OBJECT_DIR = CMakeFiles/speckle.dir
   OBJECT_FILE_DIR = CMakeFiles/speckle.dir/src
 
-build CMakeFiles/speckle.dir/src/imagegenerator.cpp.o: CXX_COMPILER__speckle_unscanned_RelWithDebInfo /workspace/src/imagegenerator.cpp || cmake_object_order_depends_target_speckle
+build CMakeFiles/speckle.dir/src/imagegenerator.cpp.o: CXX_COMPILER__speckle_unscanned_Release /workspace/src/imagegenerator.cpp || cmake_object_order_depends_target_speckle
   DEFINES = -DQT_CHARTS_LIB -DQT_CORE5COMPAT_LIB -DQT_CORE_LIB -DQT_DEPRECATED_WARNINGS_SINCE=0x060000 -DQT_DISABLE_DEPRECATED_BEFORE=0x060000 -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_WIDGETS_LIB -DSPECKLE_USE_OPENCV
   DEP_FILE = CMakeFiles/speckle.dir/src/imagegenerator.cpp.o.d
-  FLAGS = -fPIC -O2 -g -DNDEBUG -std=gnu++17
+  FLAGS = -fPIC -O3 -DNDEBUG -std=gnu++17
   INCLUDES = -I/workspace/build/linux/speckle_autogen/include -I/workspace/src -isystem /usr/include/opencv4 -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore -isystem /usr/include/x86_64-linux-gnu/qt6 -isystem /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -isystem /usr/include/x86_64-linux-gnu/qt6/QtGui -isystem /usr/include/x86_64-linux-gnu/qt6/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt6/QtCharts -isystem /usr/include/x86_64-linux-gnu/qt6/QtOpenGL -isystem /usr/include/x86_64-linux-gnu/qt6/QtOpenGLWidgets -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore5Compat
   OBJECT_DIR = CMakeFiles/speckle.dir
   OBJECT_FILE_DIR = CMakeFiles/speckle.dir/src
 
-build CMakeFiles/speckle.dir/src/openCVGrabber.cpp.o: CXX_COMPILER__speckle_unscanned_RelWithDebInfo /workspace/src/openCVGrabber.cpp || cmake_object_order_depends_target_speckle
+build CMakeFiles/speckle.dir/src/openCVGrabber.cpp.o: CXX_COMPILER__speckle_unscanned_Release /workspace/src/openCVGrabber.cpp || cmake_object_order_depends_target_speckle
   DEFINES = -DQT_CHARTS_LIB -DQT_CORE5COMPAT_LIB -DQT_CORE_LIB -DQT_DEPRECATED_WARNINGS_SINCE=0x060000 -DQT_DISABLE_DEPRECATED_BEFORE=0x060000 -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_WIDGETS_LIB -DSPECKLE_USE_OPENCV
   DEP_FILE = CMakeFiles/speckle.dir/src/openCVGrabber.cpp.o.d
-  FLAGS = -fPIC -O2 -g -DNDEBUG -std=gnu++17
+  FLAGS = -fPIC -O3 -DNDEBUG -std=gnu++17
   INCLUDES = -I/workspace/build/linux/speckle_autogen/include -I/workspace/src -isystem /usr/include/opencv4 -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore -isystem /usr/include/x86_64-linux-gnu/qt6 -isystem /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -isystem /usr/include/x86_64-linux-gnu/qt6/QtGui -isystem /usr/include/x86_64-linux-gnu/qt6/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt6/QtCharts -isystem /usr/include/x86_64-linux-gnu/qt6/QtOpenGL -isystem /usr/include/x86_64-linux-gnu/qt6/QtOpenGLWidgets -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore5Compat
   OBJECT_DIR = CMakeFiles/speckle.dir
   OBJECT_FILE_DIR = CMakeFiles/speckle.dir/src
 
-build CMakeFiles/speckle.dir/src/videointhread.cpp.o: CXX_COMPILER__speckle_unscanned_RelWithDebInfo /workspace/src/videointhread.cpp || cmake_object_order_depends_target_speckle
+build CMakeFiles/speckle.dir/src/videointhread.cpp.o: CXX_COMPILER__speckle_unscanned_Release /workspace/src/videointhread.cpp || cmake_object_order_depends_target_speckle
   DEFINES = -DQT_CHARTS_LIB -DQT_CORE5COMPAT_LIB -DQT_CORE_LIB -DQT_DEPRECATED_WARNINGS_SINCE=0x060000 -DQT_DISABLE_DEPRECATED_BEFORE=0x060000 -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_WIDGETS_LIB -DSPECKLE_USE_OPENCV
   DEP_FILE = CMakeFiles/speckle.dir/src/videointhread.cpp.o.d
-  FLAGS = -fPIC -O2 -g -DNDEBUG -std=gnu++17
+  FLAGS = -fPIC -O3 -DNDEBUG -std=gnu++17
   INCLUDES = -I/workspace/build/linux/speckle_autogen/include -I/workspace/src -isystem /usr/include/opencv4 -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore -isystem /usr/include/x86_64-linux-gnu/qt6 -isystem /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -isystem /usr/include/x86_64-linux-gnu/qt6/QtGui -isystem /usr/include/x86_64-linux-gnu/qt6/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt6/QtCharts -isystem /usr/include/x86_64-linux-gnu/qt6/QtOpenGL -isystem /usr/include/x86_64-linux-gnu/qt6/QtOpenGLWidgets -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore5Compat
   OBJECT_DIR = CMakeFiles/speckle.dir
   OBJECT_FILE_DIR = CMakeFiles/speckle.dir/src
 
-build CMakeFiles/speckle.dir/src/WriteVideoThread.cpp.o: CXX_COMPILER__speckle_unscanned_RelWithDebInfo /workspace/src/WriteVideoThread.cpp || cmake_object_order_depends_target_speckle
+build CMakeFiles/speckle.dir/src/WriteVideoThread.cpp.o: CXX_COMPILER__speckle_unscanned_Release /workspace/src/WriteVideoThread.cpp || cmake_object_order_depends_target_speckle
   DEFINES = -DQT_CHARTS_LIB -DQT_CORE5COMPAT_LIB -DQT_CORE_LIB -DQT_DEPRECATED_WARNINGS_SINCE=0x060000 -DQT_DISABLE_DEPRECATED_BEFORE=0x060000 -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_WIDGETS_LIB -DSPECKLE_USE_OPENCV
   DEP_FILE = CMakeFiles/speckle.dir/src/WriteVideoThread.cpp.o.d
-  FLAGS = -fPIC -O2 -g -DNDEBUG -std=gnu++17
+  FLAGS = -fPIC -O3 -DNDEBUG -std=gnu++17
   INCLUDES = -I/workspace/build/linux/speckle_autogen/include -I/workspace/src -isystem /usr/include/opencv4 -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore -isystem /usr/include/x86_64-linux-gnu/qt6 -isystem /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -isystem /usr/include/x86_64-linux-gnu/qt6/QtGui -isystem /usr/include/x86_64-linux-gnu/qt6/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt6/QtCharts -isystem /usr/include/x86_64-linux-gnu/qt6/QtOpenGL -isystem /usr/include/x86_64-linux-gnu/qt6/QtOpenGLWidgets -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore5Compat
   OBJECT_DIR = CMakeFiles/speckle.dir
   OBJECT_FILE_DIR = CMakeFiles/speckle.dir/src
 
-build CMakeFiles/speckle.dir/src/openCVacquireasync.cpp.o: CXX_COMPILER__speckle_unscanned_RelWithDebInfo /workspace/src/openCVacquireasync.cpp || cmake_object_order_depends_target_speckle
+build CMakeFiles/speckle.dir/src/openCVacquireasync.cpp.o: CXX_COMPILER__speckle_unscanned_Release /workspace/src/openCVacquireasync.cpp || cmake_object_order_depends_target_speckle
   DEFINES = -DQT_CHARTS_LIB -DQT_CORE5COMPAT_LIB -DQT_CORE_LIB -DQT_DEPRECATED_WARNINGS_SINCE=0x060000 -DQT_DISABLE_DEPRECATED_BEFORE=0x060000 -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_WIDGETS_LIB -DSPECKLE_USE_OPENCV
   DEP_FILE = CMakeFiles/speckle.dir/src/openCVacquireasync.cpp.o.d
-  FLAGS = -fPIC -O2 -g -DNDEBUG -std=gnu++17
+  FLAGS = -fPIC -O3 -DNDEBUG -std=gnu++17
   INCLUDES = -I/workspace/build/linux/speckle_autogen/include -I/workspace/src -isystem /usr/include/opencv4 -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore -isystem /usr/include/x86_64-linux-gnu/qt6 -isystem /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -isystem /usr/include/x86_64-linux-gnu/qt6/QtGui -isystem /usr/include/x86_64-linux-gnu/qt6/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt6/QtCharts -isystem /usr/include/x86_64-linux-gnu/qt6/QtOpenGL -isystem /usr/include/x86_64-linux-gnu/qt6/QtOpenGLWidgets -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore5Compat
   OBJECT_DIR = CMakeFiles/speckle.dir
   OBJECT_FILE_DIR = CMakeFiles/speckle.dir/src
 
-build CMakeFiles/speckle.dir/speckle_autogen/UVLADIE3JM/qrc_icons.cpp.o: CXX_COMPILER__speckle_unscanned_RelWithDebInfo /workspace/build/linux/speckle_autogen/UVLADIE3JM/qrc_icons.cpp || cmake_object_order_depends_target_speckle
+build CMakeFiles/speckle.dir/speckle_autogen/UVLADIE3JM/qrc_icons.cpp.o: CXX_COMPILER__speckle_unscanned_Release /workspace/build/linux/speckle_autogen/UVLADIE3JM/qrc_icons.cpp || cmake_object_order_depends_target_speckle
   DEFINES = -DQT_CHARTS_LIB -DQT_CORE5COMPAT_LIB -DQT_CORE_LIB -DQT_DEPRECATED_WARNINGS_SINCE=0x060000 -DQT_DISABLE_DEPRECATED_BEFORE=0x060000 -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_OPENGLWIDGETS_LIB -DQT_OPENGL_LIB -DQT_WIDGETS_LIB -DSPECKLE_USE_OPENCV
   DEP_FILE = CMakeFiles/speckle.dir/speckle_autogen/UVLADIE3JM/qrc_icons.cpp.o.d
-  FLAGS = -fPIC -O2 -g -DNDEBUG -std=gnu++17
+  FLAGS = -fPIC -O3 -DNDEBUG -std=gnu++17
   INCLUDES = -I/workspace/build/linux/speckle_autogen/include -I/workspace/src -isystem /usr/include/opencv4 -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore -isystem /usr/include/x86_64-linux-gnu/qt6 -isystem /usr/lib/x86_64-linux-gnu/qt6/mkspecs/linux-g++ -isystem /usr/include/x86_64-linux-gnu/qt6/QtGui -isystem /usr/include/x86_64-linux-gnu/qt6/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt6/QtCharts -isystem /usr/include/x86_64-linux-gnu/qt6/QtOpenGL -isystem /usr/include/x86_64-linux-gnu/qt6/QtOpenGLWidgets -isystem /usr/include/x86_64-linux-gnu/qt6/QtCore5Compat
   OBJECT_DIR = CMakeFiles/speckle.dir
   OBJECT_FILE_DIR = CMakeFiles/speckle.dir/speckle_autogen/UVLADIE3JM
@@ -257,9 +257,9 @@ build CMakeFiles/speckle.dir/speckle_autogen/UVLADIE3JM/qrc_icons.cpp.o: CXX_COM
 #############################################
 # Link the executable speckle
 
-build speckle: CXX_EXECUTABLE_LINKER__speckle_RelWithDebInfo CMakeFiles/speckle.dir/speckle_autogen/mocs_compilation.cpp.o CMakeFiles/speckle.dir/src/main.cpp.o CMakeFiles/speckle.dir/src/specklewindow.cpp.o CMakeFiles/speckle.dir/src/camera.cpp.o CMakeFiles/speckle.dir/src/speckle.cpp.o CMakeFiles/speckle.dir/src/SpeckleROIClass.cpp.o CMakeFiles/speckle.dir/src/SpeckleOverlayClass.cpp.o CMakeFiles/speckle.dir/src/speckle_processing.cpp.o CMakeFiles/speckle.dir/src/speckledisplay.cpp.o CMakeFiles/speckle.dir/src/ProcessingThread.cpp.o CMakeFiles/speckle.dir/src/WriteThread.cpp.o CMakeFiles/speckle.dir/src/WriteSCThread.cpp.o CMakeFiles/speckle.dir/src/HistogramWindow.cpp.o CMakeFiles/speckle.dir/src/acquisitionclass.cpp.o CMakeFiles/speckle.dir/src/cameradescription.cpp.o CMakeFiles/speckle.dir/src/SpeckleSettings.cpp.o CMakeFiles/speckle.dir/src/liveimagecreator.cpp.o CMakeFiles/speckle.dir/src/scimagecreator.cpp.o CMakeFiles/speckle.dir/src/overlayimagecreator.cpp.o CMakeFiles/speckle.dir/src/imagegenerator.cpp.o CMakeFiles/speckle.dir/src/openCVGrabber.cpp.o CMakeFiles/speckle.dir/src/videointhread.cpp.o CMakeFiles/speckle.dir/src/WriteVideoThread.cpp.o CMakeFiles/speckle.dir/src/openCVacquireasync.cpp.o CMakeFiles/speckle.dir/speckle_autogen/UVLADIE3JM/qrc_icons.cpp.o | /usr/lib/x86_64-linux-gnu/libQt6Charts.so.6.8.3 /usr/lib/x86_64-linux-gnu/libQt6Core5Compat.so.6.8.3 /usr/lib/x86_64-linux-gnu/libopencv_stitching.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_alphamat.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_aruco.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_bgsegm.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_bioinspired.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_ccalib.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_cvv.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_dnn_objdetect.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_dnn_superres.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_dpm.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_face.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_freetype.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_fuzzy.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_hdf.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_hfs.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_img_hash.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_intensity_transform.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_line_descriptor.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_mcc.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_quality.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_rapid.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_reg.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_rgbd.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_saliency.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_shape.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_signal.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_stereo.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_structured_light.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_superres.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_surface_matching.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_tracking.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_videostab.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_viz.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_wechat_qrcode.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_xobjdetect.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_xphoto.so.4.10.0 /usr/lib/x86_64-linux-gnu/libQt6OpenGLWidgets.so.6.8.3 /usr/lib/x86_64-linux-gnu/libQt6Widgets.so.6.8.3 /usr/lib/x86_64-linux-gnu/libQt6OpenGL.so.6.8.3 /usr/lib/x86_64-linux-gnu/libQt6Gui.so.6.8.3 /usr/lib/x86_64-linux-gnu/libGLX.so /usr/lib/x86_64-linux-gnu/libOpenGL.so /usr/lib/x86_64-linux-gnu/libQt6Core.so.6.8.3 /usr/lib/x86_64-linux-gnu/libopencv_highgui.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_datasets.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_plot.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_text.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_ml.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_phase_unwrapping.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_optflow.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_ximgproc.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_video.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_videoio.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_imgcodecs.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_objdetect.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_calib3d.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_dnn.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_features2d.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_flann.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_photo.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_imgproc.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_core.so.4.10.0 || speckle_autogen speckle_autogen_timestamp_deps
+build speckle: CXX_EXECUTABLE_LINKER__speckle_Release CMakeFiles/speckle.dir/speckle_autogen/mocs_compilation.cpp.o CMakeFiles/speckle.dir/src/main.cpp.o CMakeFiles/speckle.dir/src/specklewindow.cpp.o CMakeFiles/speckle.dir/src/camera.cpp.o CMakeFiles/speckle.dir/src/speckle.cpp.o CMakeFiles/speckle.dir/src/SpeckleROIClass.cpp.o CMakeFiles/speckle.dir/src/SpeckleOverlayClass.cpp.o CMakeFiles/speckle.dir/src/speckle_processing.cpp.o CMakeFiles/speckle.dir/src/speckledisplay.cpp.o CMakeFiles/speckle.dir/src/ProcessingThread.cpp.o CMakeFiles/speckle.dir/src/WriteThread.cpp.o CMakeFiles/speckle.dir/src/WriteSCThread.cpp.o CMakeFiles/speckle.dir/src/HistogramWindow.cpp.o CMakeFiles/speckle.dir/src/acquisitionclass.cpp.o CMakeFiles/speckle.dir/src/cameradescription.cpp.o CMakeFiles/speckle.dir/src/SpeckleSettings.cpp.o CMakeFiles/speckle.dir/src/liveimagecreator.cpp.o CMakeFiles/speckle.dir/src/scimagecreator.cpp.o CMakeFiles/speckle.dir/src/overlayimagecreator.cpp.o CMakeFiles/speckle.dir/src/imagegenerator.cpp.o CMakeFiles/speckle.dir/src/openCVGrabber.cpp.o CMakeFiles/speckle.dir/src/videointhread.cpp.o CMakeFiles/speckle.dir/src/WriteVideoThread.cpp.o CMakeFiles/speckle.dir/src/openCVacquireasync.cpp.o CMakeFiles/speckle.dir/speckle_autogen/UVLADIE3JM/qrc_icons.cpp.o | /usr/lib/x86_64-linux-gnu/libQt6Charts.so.6.8.3 /usr/lib/x86_64-linux-gnu/libQt6Core5Compat.so.6.8.3 /usr/lib/x86_64-linux-gnu/libopencv_stitching.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_alphamat.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_aruco.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_bgsegm.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_bioinspired.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_ccalib.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_cvv.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_dnn_objdetect.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_dnn_superres.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_dpm.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_face.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_freetype.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_fuzzy.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_hdf.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_hfs.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_img_hash.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_intensity_transform.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_line_descriptor.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_mcc.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_quality.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_rapid.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_reg.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_rgbd.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_saliency.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_shape.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_signal.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_stereo.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_structured_light.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_superres.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_surface_matching.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_tracking.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_videostab.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_viz.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_wechat_qrcode.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_xobjdetect.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_xphoto.so.4.10.0 /usr/lib/x86_64-linux-gnu/libQt6OpenGLWidgets.so.6.8.3 /usr/lib/x86_64-linux-gnu/libQt6Widgets.so.6.8.3 /usr/lib/x86_64-linux-gnu/libQt6OpenGL.so.6.8.3 /usr/lib/x86_64-linux-gnu/libQt6Gui.so.6.8.3 /usr/lib/x86_64-linux-gnu/libGLX.so /usr/lib/x86_64-linux-gnu/libOpenGL.so /usr/lib/x86_64-linux-gnu/libQt6Core.so.6.8.3 /usr/lib/x86_64-linux-gnu/libopencv_highgui.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_datasets.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_plot.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_text.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_ml.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_phase_unwrapping.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_optflow.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_ximgproc.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_video.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_videoio.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_imgcodecs.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_objdetect.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_calib3d.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_dnn.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_features2d.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_flann.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_photo.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_imgproc.so.4.10.0 /usr/lib/x86_64-linux-gnu/libopencv_core.so.4.10.0 || speckle_autogen speckle_autogen_timestamp_deps
   DEP_FILE = CMakeFiles/speckle.dir/link.d
-  FLAGS = -fPIC -O2 -g -DNDEBUG
+  FLAGS = -fPIC -O3 -DNDEBUG
   LINK_FLAGS = -Xlinker --dependency-file=CMakeFiles/speckle.dir/link.d
   LINK_LIBRARIES = /usr/lib/x86_64-linux-gnu/libQt6Charts.so.6.8.3  /usr/lib/x86_64-linux-gnu/libQt6Core5Compat.so.6.8.3  /usr/lib/x86_64-linux-gnu/libopencv_stitching.so.4.10.0  /usr/lib/x86_64-linux-gnu/libopencv_alphamat.so.4.10.0  /usr/lib/x86_64-linux-gnu/libopencv_aruco.so.4.10.0  /usr/lib/x86_64-linux-gnu/libopencv_bgsegm.so.4.10.0  /usr/lib/x86_64-linux-gnu/libopencv_bioinspired.so.4.10.0  /usr/lib/x86_64-linux-gnu/libopencv_ccalib.so.4.10.0  /usr/lib/x86_64-linux-gnu/libopencv_cvv.so.4.10.0  /usr/lib/x86_64-linux-gnu/libopencv_dnn_objdetect.so.4.10.0  /usr/lib/x86_64-linux-gnu/libopencv_dnn_superres.so.4.10.0  /usr/lib/x86_64-linux-gnu/libopencv_dpm.so.4.10.0  /usr/lib/x86_64-linux-gnu/libopencv_face.so.4.10.0  /usr/lib/x86_64-linux-gnu/libopencv_freetype.so.4.10.0  /usr/lib/x86_64-linux-gnu/libopencv_fuzzy.so.4.10.0  /usr/lib/x86_64-linux-gnu/libopencv_hdf.so.4.10.0  /usr/lib/x86_64-linux-gnu/libopencv_hfs.so.4.10.0  /usr/lib/x86_64-linux-gnu/libopencv_img_hash.so.4.10.0  /usr/lib/x86_64-linux-gnu/libopencv_intensity_transform.so.4.10.0  /usr/lib/x86_64-linux-gnu/libopencv_line_descriptor.so.4.10.0  /usr/lib/x86_64-linux-gnu/libopencv_mcc.so.4.10.0  /usr/lib/x86_64-linux-gnu/libopencv_quality.so.4.10.0  /usr/lib/x86_64-linux-gnu/libopencv_rapid.so.4.10.0  /usr/lib/x86_64-linux-gnu/libopencv_reg.so.4.10.0  /usr/lib/x86_64-linux-gnu/libopencv_rgbd.so.4.10.0  /usr/lib/x86_64-linux-gnu/libopencv_saliency.so.4.10.0  /usr/lib/x86_64-linux-gnu/libopencv_shape.so.4.10.0  /usr/lib/x86_64-linux-gnu/libopencv_signal.so.4.10.0  /usr/lib/x86_64-linux-gnu/libopencv_stereo.so.4.10.0  /usr/lib/x86_64-linux-gnu/libopencv_structured_light.so.4.10.0  /usr/lib/x86_64-linux-gnu/libopencv_superres.so.4.10.0  /usr/lib/x86_64-linux-gnu/libopencv_surface_matching.so.4.10.0  /usr/lib/x86_64-linux-gnu/libopencv_tracking.so.4.10.0  /usr/lib/x86_64-linux-gnu/libopencv_videostab.so.4.10.0  /usr/lib/x86_64-linux-gnu/libopencv_viz.so.4.10.0  /usr/lib/x86_64-linux-gnu/libopencv_wechat_qrcode.so.4.10.0  /usr/lib/x86_64-linux-gnu/libopencv_xobjdetect.so.4.10.0  /usr/lib/x86_64-linux-gnu/libopencv_xphoto.so.4.10.0  /usr/lib/x86_64-linux-gnu/libQt6OpenGLWidgets.so.6.8.3  /usr/lib/x86_64-linux-gnu/libQt6Widgets.so.6.8.3  /usr/lib/x86_64-linux-gnu/libQt6OpenGL.so.6.8.3  /usr/lib/x86_64-linux-gnu/libQt6Gui.so.6.8.3  /usr/lib/x86_64-linux-gnu/libGLX.so  /usr/lib/x86_64-linux-gnu/libOpenGL.so  /usr/lib/x86_64-linux-gnu/libQt6Core.so.6.8.3  /usr/lib/x86_64-linux-gnu/libopencv_highgui.so.4.10.0  /usr/lib/x86_64-linux-gnu/libopencv_datasets.so.4.10.0  /usr/lib/x86_64-linux-gnu/libopencv_plot.so.4.10.0  /usr/lib/x86_64-linux-gnu/libopencv_text.so.4.10.0  /usr/lib/x86_64-linux-gnu/libopencv_ml.so.4.10.0  /usr/lib/x86_64-linux-gnu/libopencv_phase_unwrapping.so.4.10.0  /usr/lib/x86_64-linux-gnu/libopencv_optflow.so.4.10.0  /usr/lib/x86_64-linux-gnu/libopencv_ximgproc.so.4.10.0  /usr/lib/x86_64-linux-gnu/libopencv_video.so.4.10.0  /usr/lib/x86_64-linux-gnu/libopencv_videoio.so.4.10.0  /usr/lib/x86_64-linux-gnu/libopencv_imgcodecs.so.4.10.0  /usr/lib/x86_64-linux-gnu/libopencv_objdetect.so.4.10.0  /usr/lib/x86_64-linux-gnu/libopencv_calib3d.so.4.10.0  /usr/lib/x86_64-linux-gnu/libopencv_dnn.so.4.10.0  /usr/lib/x86_64-linux-gnu/libopencv_features2d.so.4.10.0  /usr/lib/x86_64-linux-gnu/libopencv_flann.so.4.10.0  /usr/lib/x86_64-linux-gnu/libopencv_photo.so.4.10.0  /usr/lib/x86_64-linux-gnu/libopencv_imgproc.so.4.10.0  /usr/lib/x86_64-linux-gnu/libopencv_core.so.4.10.0
   OBJECT_DIR = CMakeFiles/speckle.dir
@@ -308,7 +308,7 @@ build speckle_autogen: phony CMakeFiles/speckle_autogen speckle_autogen/include/
 # Custom command for speckle_autogen/timestamp
 
 build speckle_autogen/timestamp speckle_autogen/mocs_compilation.cpp | ${cmake_ninja_workdir}speckle_autogen/timestamp ${cmake_ninja_workdir}speckle_autogen/mocs_compilation.cpp: CUSTOM_COMMAND /usr/lib/qt6/libexec/moc /usr/lib/qt6/libexec/uic || speckle_autogen_timestamp_deps
-  COMMAND = cd /workspace/build/linux && /usr/bin/cmake -E cmake_autogen /workspace/build/linux/CMakeFiles/speckle_autogen.dir/AutogenInfo.json RelWithDebInfo && /usr/bin/cmake -E touch /workspace/build/linux/speckle_autogen/timestamp && /usr/bin/cmake -E cmake_transform_depfile Ninja gccdepfile /workspace /workspace /workspace/build/linux /workspace/build/linux /workspace/build/linux/speckle_autogen/deps /workspace/build/linux/CMakeFiles/d/7718d5d4dfefeea6697d4672e3910db666949ae95475211f603734a759af1e15.d
+  COMMAND = cd /workspace/build/linux && /usr/bin/cmake -E cmake_autogen /workspace/build/linux/CMakeFiles/speckle_autogen.dir/AutogenInfo.json Release && /usr/bin/cmake -E touch /workspace/build/linux/speckle_autogen/timestamp && /usr/bin/cmake -E cmake_transform_depfile Ninja gccdepfile /workspace /workspace /workspace/build/linux /workspace/build/linux /workspace/build/linux/speckle_autogen/deps /workspace/build/linux/CMakeFiles/d/7718d5d4dfefeea6697d4672e3910db666949ae95475211f603734a759af1e15.d
   DESC = Automatic MOC and UIC for target speckle
   depfile = CMakeFiles/d/7718d5d4dfefeea6697d4672e3910db666949ae95475211f603734a759af1e15.d
   deps = gcc
@@ -319,7 +319,7 @@ build speckle_autogen/timestamp speckle_autogen/mocs_compilation.cpp | ${cmake_n
 # Custom command for speckle_autogen/UVLADIE3JM/qrc_icons.cpp
 
 build speckle_autogen/UVLADIE3JM/qrc_icons.cpp | ${cmake_ninja_workdir}speckle_autogen/UVLADIE3JM/qrc_icons.cpp: CUSTOM_COMMAND /workspace/src/icons.qrc CMakeFiles/speckle_autogen.dir/AutoRcc_icons_UVLADIE3JM_Info.json /workspace/src/icons/histogram.png /workspace/src/icons/add.png /workspace/src/icons/remove.png /workspace/src/icons/save.png /workspace/src/icons/processing.png /workspace/src/icons/crop_reset.png /workspace/src/icons/settings.png /workspace/src/icons/crop.png /workspace/src/icons/roi.png /workspace/src/icons/acquire.png /workspace/src/icons/color_picker.png /workspace/src/icons/handle_vertical.png /workspace/src/icons/live.png /workspace/src/icons/dmd.png /workspace/src/icons/display.png /workspace/src/icons/stop.png /workspace/src/icons/folder.png /workspace/src/icons/handle_horizontal.png /workspace/src/icons/splash.png /workspace/src/icons/DynamicLight.png /usr/lib/qt6/libexec/rcc /usr/lib/qt6/libexec/rcc || speckle_autogen speckle_autogen_timestamp_deps
-  COMMAND = cd /workspace/build/linux && /usr/bin/cmake -E cmake_autorcc /workspace/build/linux/CMakeFiles/speckle_autogen.dir/AutoRcc_icons_UVLADIE3JM_Info.json RelWithDebInfo
+  COMMAND = cd /workspace/build/linux && /usr/bin/cmake -E cmake_autorcc /workspace/build/linux/CMakeFiles/speckle_autogen.dir/AutoRcc_icons_UVLADIE3JM_Info.json Release
   DESC = Automatic RCC for src/icons.qrc
   restat = 1
 
@@ -363,7 +363,7 @@ build /usr/lib/x86_64-linux-gnu/cmake/Qt6/3rdparty/kwin/FindXKB.cmake /usr/lib/x
 # Clean additional files.
 
 build CMakeFiles/clean.additional: CLEAN_ADDITIONAL
-  CONFIG = RelWithDebInfo
+  CONFIG = Release
 
 
 #############################################
