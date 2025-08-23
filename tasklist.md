@@ -20,3 +20,8 @@
 
 ## Build, packaging, CI
 - [ ] Optional: Windows build with Qt6 and OpenCV via vcpkg
+
+## macOS setup
+- [ ] Install Homebrew and run `brew update`
+- [ ] Install required packages via Homebrew: `cmake`, `ninja`, `qt`, `opencv`
+- [ ] (Optional) Install Basler Pylon SDK and/or NI-DAQmx for hardware support

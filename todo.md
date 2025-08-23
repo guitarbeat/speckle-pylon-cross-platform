@@ -12,6 +12,9 @@
 - [ ] Validate Basler/Pylon path after image representation changes
 
 ## Backlog
+- [ ] Install Homebrew and run `brew update`
+- [ ] Install required packages with Homebrew: `cmake`, `ninja`, `qt`, `opencv`
+- [ ] (Optional) Install Basler Pylon SDK and/or NI-DAQmx
 - [ ] Migrate remaining image code to `cv::Mat`/`QImage`; remove `CImg_to_QImage`
 - [ ] Replace `draw_axis`/colorbar with Qt painting and remove shim no-op
 - [ ] Optimize naive `convolve`, `blur`, and resize or move to OpenCV equivalents
