@@ -17,6 +17,7 @@
 ## Camera and video
 - [ ] Verify USB/video-in with OpenCV capture devices (exposure, FPS)
 - [ ] Validate Basler/Pylon path after image changes
+- [ ] Install Basler Pylon SDK and rebuild with `SPECKLE_USE_PYLON=ON` to confirm hardware integration (currently blocked by network restrictions)
 
 ## Build, packaging, CI
 - [ ] Optional: Windows build with Qt6 and OpenCV via vcpkg
@@ -25,3 +26,4 @@
 - [ ] Install Homebrew and run `brew update`
 - [ ] Install required packages via Homebrew: `cmake`, `ninja`, `qt`, `opencv`
 - [ ] (Optional) Install Basler Pylon SDK and/or NI-DAQmx for hardware support
+
