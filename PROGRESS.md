@@ -175,6 +175,7 @@ if(c.camera_type==CAMERA_FRAMEGRABBER)
 
 - **Successful Linux build**: Built binary present.
 - Path: `/workspace/build/linux/speckle` (6.4 MB)
+- **Runtime dependency issue**: Running the binary fails with `libQt6Charts.so.6` missing, so the Qt UI cannot launch.
 
 ---
 
