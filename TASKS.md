@@ -26,6 +26,7 @@ Status legend: [x] done, [~] in progress, [ ] todo
 ## Camera and video
 - [ ] Verify USB/video-in with OpenCV capture devices (exposure, FPS)
 - [ ] Validate Basler/Pylon path after image changes
+- [ ] Install Basler Pylon SDK and rebuild with `SPECKLE_USE_PYLON=ON` to confirm hardware integration (currently blocked by network restrictions)
 
 ## Documentation
 - [x] Add TASKS.md
